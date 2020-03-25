@@ -8,7 +8,7 @@ header("Access-Control-Allow-Origin: *");
 $connection = getConnection();
 
 if (isset($_GET["id"])) {
-    $data = getSingleMovie($connection, $_GET["id"]);
+    $data = getSingleMovieBrief($connection, $_GET["id"]);
 } else {
     $data = getAllMovies($connection);
 }
