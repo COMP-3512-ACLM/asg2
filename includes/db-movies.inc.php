@@ -2,14 +2,23 @@
 
 include "db-common.inc.php";
 
+define("FIELDS_BRIEF", "id, tmdb_id, imdb_id, release_date, title, runtime, revenue, tagline, poster_path, vote_average, vote_count, popularity, overview");
+
 // Returns brief information on all movies.
-function getAllMovies($connection) {
+function getAllMoviesBrief($connection) {
     try {
-        // The fields to be selected in the query. This is to make the sql variable more readable and to make it easier to modify the query fields
-        $fields = "id, tmdb_id, imdb_id, release_date, title, runtime, revenue, tagline, poster_path, vote_average, vote_count, popularity, overview";
-        
-        $sql = "SELECT $fields FROM movie";
+        $sql = "SELECT " . FIELDS_BRIEF . " FROM movie";
         return runQuery($connection, $sql, null);
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
+
+// Returns brief information on a single movie.
+function getSingleMovieBrief($connection, $id) {
+    try {
+        $sql = "SELECT " . FIELDS_BRIEF . " FROM movie WHERE id=?";
+        return runQuery($connection, $sql, $id);
     } catch (PDOException $e) {
         die($e->getMessage());
     }
