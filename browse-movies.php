@@ -20,15 +20,15 @@
                 <fieldset>
                     <legend>Year</legend>
                     <!--Before-->
-                    <input type="radio" />
+                    <input name="year" type="radio" />
                     <label>Before</label>
                     <input type="text" />
                     <!--After-->
-                    <input type="radio" />
+                    <input name="year" type="radio" />
                     <label>After</label>
                     <input type="text" />
                     <!--Between-->
-                    <input type="radio" />
+                    <input name="year" type="radio" />
                     <label>Between</label>
                     <input type="text" />
                     <input type="text" />
@@ -37,17 +37,17 @@
                 <fieldset>
                     <legend>Rating</legend>
                     <!--Below-->
-                    <input type="radio" />
+                    <input name="rating" type="radio" />
                     <label>Below</label>
                     <input name="below" type="range" min="0" max="10" value="5" />
                     <output for="below"></output>
                     <!--Above-->
-                    <input type="radio" />
+                    <input name="rating" type="radio" />
                     <label>Above</label>
                     <input name="above" type="range" min="0" max="10" value="5" />
                     <output for="above"></output>
                     <!--Between-->
-                    <input type="radio" />
+                    <input name="rating" type="radio" />
                     <label>Between</label>
                     <input name="between-lower" type="range" min="0" max="10" value="5" />
                     <output for="between-lower"></output>
