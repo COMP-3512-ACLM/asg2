@@ -22,9 +22,23 @@ output {
 }
 
 .container {
-    background-color: lightblue;
+    background-color: lightblue; /* TODO: remove; this is temporary */
     
     padding: var(--container-padding);
+}
+
+.icon {
+    font-family: "Segoe UI Symbol"; /* Renders icons as symbols rather than emojis */
+    font-weight: normal;
+    user-select: none;
+}
+
+.star {
+    color: gold;
+    
+    /*  From https://css-tricks.com/adding-stroke-to-web-text/
+        Doesn't work in IE, but thats OK */
+    -webkit-text-stroke: 1px black;
 }
 
 /******************************
@@ -33,6 +47,8 @@ Filter panel styling
 
 #filters {
     width: var(--filters-width);
+    min-width: var(--filters-width); /* Prevents the filters panel from being "eaten" by the results panel when the viewport size is too small */
+    
     overflow: hidden; /* For hiding the contents when toggled */
     padding: 0; /* Otherwise, the panel still shows when width is 0 */
     
@@ -41,6 +57,7 @@ Filter panel styling
 
 #filters.hidden {
     width: 0;
+    min-width: 0;
 }
 
 #filters form, #filters h1 {
@@ -112,4 +129,62 @@ Search results styling
 }
 #sortbar span[data-sortdir="-1"]::after {
     content: " ▾";
+}
+
+/* Search results */
+
+#results li {
+    display: flex;
+    
+    margin-bottom: 1rem;
+    
+    height: 138px; /* Matches poster */
+    min-width: 500px;
+    max-width: 800px;
+    
+    background-color: white; /* TODO: change colour;*/
+}
+
+#results li div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+    padding: .5rem 1rem;
+    
+    width: 100%;
+}
+
+#results li p {
+    grid-column: 1 / span 2;
+    
+    
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#results li button {
+    grid-column: 2;
+}
+
+#results li h2, #results .rating {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#results .rating {
+    text-align: right;
+}
+
+#results li h2, #results li span {
+    margin: auto 0;
+}
+
+#results .year {
+    opacity: 75%;
+}
+
+/* TODO: remove; this is temporary */
+body {
+    display: flex;
 }
