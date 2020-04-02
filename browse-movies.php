@@ -68,8 +68,10 @@
                         <output for="between-upper">10</output>
                     </div>
                 </fieldset>
-                <button>Filter</button>
-                <button>Clear</button>
+                <div>
+                    <button>Filter</button>
+                    <button>Clear</button>
+                </div>
             </form>
         </div>
         <!--Results-->

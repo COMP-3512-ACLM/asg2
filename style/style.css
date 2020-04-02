@@ -77,6 +77,10 @@ Filter panel styling
     margin: var(--container-padding); /* This acts as the padding removed earlier */
 }
 
+#filters button {
+    margin: auto;
+}
+
 #filters fieldset {
     margin-bottom: 1rem;
 }
@@ -91,11 +95,20 @@ Filter panel styling
         The sum of these variables should equal the --filters-width variable minus padding. */
     --radio-size: 2rem;
     --label-size: 4rem;
-    --input-size: 13rem;
+    --input-size: 12rem;
     --output-size: 2rem;
     
     grid-template-columns: var(--radio-size) var(--label-size)
                             var(--input-size) var(--output-size);
+}
+
+/* The button container */
+#filters form > div {
+    display: grid;
+    grid-gap: 1rem;
+    
+    /* Note that static units are used here again, for the same purpose as above. */
+    grid-template-columns: repeat(2, calc(var(--filters-width) / 2 - 1rem));
 }
 
 #filters input[type=text], #filters input[type=range] {
@@ -104,35 +117,12 @@ Filter panel styling
     width: 100%;
 }
 
+#filters input[type=text] {
+    grid-column-end: 5;
+}
+
 #filters, #results-panel {
     transition: all .5s ease;
-}
-
-#hide {
-    position: fixed;
-    margin-left: -2rem;
-    background: none;
-    border: none;
-    
-    font-size: 2rem;
-    width: 2rem;
-    height: 2rem;
-    line-height: 2rem;
-    padding: 0;
-    
-    opacity: 60%;
-}
-
-.open #hide::after {
-    content: "<";
-}
-
-#hide::after {
-    content: ">";
-}
-
-#hide:hover {
-    opacity: 100%;
 }
 
 /******************************
@@ -173,6 +163,36 @@ Search results styling
 }
 #sortbar span[data-sortdir="-1"]::after {
     content: " ▾";
+}
+
+/* The toggle button */
+
+#hide {
+    position: fixed;
+    margin-left: -2rem; /* This should match the left padding of the results panel */
+    background: none;
+    border: none;
+    
+    font-size: 2rem;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    padding: 0;
+    
+    opacity: 75%;
+}
+
+/* Displays the appropriate arrow for the toggle button */
+#hide::after {
+    content: ">";
+}
+
+.open #hide::after {
+    content: "<";
+}
+
+#hide:hover {
+    opacity: 100%;
 }
 
 /* Search results */
