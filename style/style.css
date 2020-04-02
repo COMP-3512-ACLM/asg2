@@ -87,6 +87,7 @@ Search results styling
 
 #sortbar span {
     margin: auto;
+    user-select: none;
     
     opacity: 75%; /* Slightly transparent when not selected */
 }
@@ -101,7 +102,6 @@ Search results styling
 #sortbar span::after {
     opacity: 0;
 }
-
 #sortbar span.selected, #sortbar span.selected::after {
     opacity: 100%;
 }
@@ -110,7 +110,6 @@ Search results styling
 #sortbar span[data-sortdir="1"]::after {
     content: " ▴";
 }
-
 #sortbar span[data-sortdir="-1"]::after {
     content: " ▾";
 }
