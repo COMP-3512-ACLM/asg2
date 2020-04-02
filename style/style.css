@@ -28,7 +28,7 @@ output {
 }
 
 /******************************
-Search results filter styling
+Filter panel styling
 ******************************/
 
 #filters {
@@ -74,6 +74,43 @@ Search results filter styling
     width: 100%;
 }
 
-.container {
-    width: 30%;
+/******************************
+Search results styling
+******************************/
+
+/* The "sort by" bar */
+
+#sortbar {
+    display: grid;
+    grid-template-columns: auto repeat(3, 5em);
+}
+
+#sortbar span {
+    margin: auto;
+    
+    opacity: 75%; /* Slightly transparent when not selected */
+}
+
+#sortbar span:hover {
+    cursor: pointer;
+    
+    opacity: 100%;
+}
+
+/* Only show sort direction when selected */
+#sortbar span::after {
+    opacity: 0;
+}
+
+#sortbar span.selected, #sortbar span.selected::after {
+    opacity: 100%;
+}
+
+/* Show appropriate arrow for sort direction */
+#sortbar span[data-sortdir="1"]::after {
+    content: " ▴";
+}
+
+#sortbar span[data-sortdir="-1"]::after {
+    content: " ▾";
 }

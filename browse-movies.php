@@ -73,7 +73,14 @@
             </form>
         </div>
         <!--Results-->
-        <div>
+        <div class="container">
+            <h1>Search Results</h1>
+            <div id="sortbar">
+                <h2>Sort by:</h2>
+                <span data-sortid="title" data-sortdir="1">Title</span>
+                <span data-sortid="rating" data-sortdir="1">Rating</span>
+                <span data-sortid="year" data-sortdir="1">Year</span>
+            </div>
         </div>
     </body>
 </html>
