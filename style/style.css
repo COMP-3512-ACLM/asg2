@@ -1,0 +1,78 @@
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+:root {
+    --filters-width: 22rem;
+}
+
+/* Prevents inputs from overflowing */
+form {
+    box-sizing: border-box;
+}
+
+input {
+    margin-bottom: .25rem;
+}
+
+output {
+    margin: auto;
+    font-size: .75em;
+}
+
+.container {
+    background-color: lightblue;
+    
+    padding: var(--container-padding);
+}
+
+/******************************
+Search results filter styling
+******************************/
+
+#filters {
+    width: var(--filters-width);
+    overflow: hidden; /* For hiding the contents when toggled */
+    padding: 0; /* Otherwise, the panel still shows when width is 0 */
+    
+    transition: .5s width ease;
+}
+
+#filters.hidden {
+    width: 0;
+}
+
+#filters form {
+    margin: 1rem;
+}
+
+#filters fieldset {
+    margin-bottom: 1rem;
+}
+
+#filters fieldset div {
+    margin-bottom: .375rem;
+    
+    display: grid;
+    
+    /*  Note: Exact, static units are used here to maintain the panel's contents when toggling.
+        With relative sizes, the panel contents will shift around as the panel is toggled.
+        The sum of these variables should equal the --filters-width variable minus padding. */
+    --radio-size: 2rem;
+    --label-size: 4rem;
+    --input-size: 13rem;
+    --output-size: 2rem;
+    
+    grid-template-columns: var(--radio-size) var(--label-size)
+                            var(--input-size) var(--output-size);
+}
+
+#filters input[type=text], #filters input[type=range] {
+    grid-column: 3;
+    
+    width: 100%;
+}
+
+.container {
+    width: 30%;
+}
