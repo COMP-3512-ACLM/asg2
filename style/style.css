@@ -3,6 +3,7 @@
 }
 
 :root {
+    --container-padding: 1rem;
     --filters-width: 22rem;
 }
 
@@ -42,8 +43,8 @@ Search results filter styling
     width: 0;
 }
 
-#filters form {
-    margin: 1rem;
+#filters form, #filters h1 {
+    margin: var(--container-padding); /* This acts as the padding removed earlier */
 }
 
 #filters fieldset {
