@@ -1,14 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const filterPanel = document.querySelector("#filters");
+    const resultsPanel = document.querySelector("#results-panel");
+    
     //Updates the range outputs
-    document.querySelector("#filters").addEventListener("input", e => {
+    
+    filterPanel.addEventListener("input", e => {
         if (e.target.nodeName == "INPUT" && e.target.getAttribute("type") == "range") {
             document.querySelector(`output[for="${e.target.name}"]`).textContent = e.target.value;
         }
     });
     
+    //Sorting search results
+    
     const sortButtons = document.querySelectorAll("#sortbar span");
+    
     document.querySelector("#sortbar").addEventListener("click", e => {
-        console.log("a");
         if (e.target.nodeName == "SPAN") {
             for (let btn of sortButtons) {
                 if (btn == e.target) {
@@ -25,4 +31,11 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     });
+    
+    // Toggling the filter panel
+    document.querySelector("#hide").addEventListener("click", e => {
+        filterPanel.classList.toggle("hidden");
+        resultsPanel.classList.toggle("open");
+    });
+    
 });

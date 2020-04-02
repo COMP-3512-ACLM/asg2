@@ -73,7 +73,8 @@
             </form>
         </div>
         <!--Results-->
-        <div class="container">
+        <div id="results-panel" class="container"><!-- This could have a better ID -->
+            <button id="hide"></button>
             <h1>Search Results</h1>
             <div id="sortbar">
                 <h2>Sort by:</h2>
@@ -83,9 +84,9 @@
             </div>
             <ul id="results">
                 <li>
-                    <img src="https://image.tmdb.org/t/p/w92/wOBKAoUJZb5qTsWv5XXvVV2vUzz.jpg">
+                    <img src="https://image.tmdb.org/t/p/w92/wOBKAoUJZb5qTsWv5XXvVV2vUzz.jpg" class="clickable">
                     <div>
-                        <h2>Movie Title</h2>
+                        <h2 class="clickable">Movie Title</h2>
                         <span class="rating">
                             8.3
                             <span class="star icon">★</span>
