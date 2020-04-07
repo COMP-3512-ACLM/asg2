@@ -28,7 +28,7 @@ function getSingleMovieBrief($connection, $id) {
 function getSingleMovie($connection, $id) {
     try {
         $sql = "SELECT * FROM movie WHERE id=?";
-        return runQuery($connection, $sql, $id);
+        return runQuery($connection, $sql, $id)->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         die($e->getMessage());
     }
