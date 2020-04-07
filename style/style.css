@@ -1,0 +1,57 @@
+/******************************
+
+General style for all pages
+
+******************************/
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+:root {
+    --header-height: 10rem;
+    --container-padding: 1rem;
+    --filters-width: 22rem;
+}
+
+/* Prevents inputs from overflowing */
+form {
+    box-sizing: border-box;
+}
+
+input {
+    margin-bottom: .25rem;
+}
+
+output {
+    margin: auto;
+    font-size: .75em;
+}
+
+.container {
+    padding: var(--container-padding);
+}
+
+
+.clickable, /* A general purpose class to indicate that something is clickable */
+button {
+    cursor: pointer;
+}
+
+.icon {
+    font-family: "Segoe UI Symbol"; /* Renders icons as symbols rather than emojis */
+    font-weight: normal;
+    user-select: none;
+}
+
+.star {
+    color: black;
+    
+    /*  From https://css-tricks.com/adding-stroke-to-web-text/
+        Doesn't work in IE, but thats OK */
+    -webkit-text-stroke: 1px black;
+}
+
+.star.filled {
+    color: gold;
+}
