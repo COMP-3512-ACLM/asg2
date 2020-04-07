@@ -79,6 +79,79 @@ main > div:not(#card) {
     grid-row: 1 / span 3;
 }
 
+/******************************
+Poster & Lightbox
+******************************/
+
+#poster {
+    margin: 0;
+    position: relative;
+    height: 278px;
+}
+
+#poster div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    background-color: rgba(0, 0, 0, .6);
+    opacity: 0;
+    transition: opacity .2s;
+}
+
+#poster div:hover {
+    opacity: 100%;
+    cursor: zoom-in;
+}
+
+#poster .icon {
+    color: white;
+    font-size: 2rem;
+}
+
+#lightbox {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    justify-content: center;
+}
+
+#lightbox div {
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+    width: 100%;
+    height: 100vh;
+    
+    background-color: rgba(0, 0, 0, .8);
+}
+
+#lightbox img {
+    position: absolute;
+    top: 0;
+    
+    margin: 4rem auto;
+    
+    max-width: 80%;
+}
+
+/******************************
+
+Mobile
+
+******************************/
+
 @media only screen and (max-width: 600px) {
     hr {
         display: none;
@@ -88,7 +161,7 @@ main > div:not(#card) {
         grid-template-columns: 1fr;
     }
     
-    #card img {
+    #poster {
         margin: 0 auto;
     }
     

@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     crewTable.style.display = "none";
     
-    /* Hides/shows the selected tab */
+    // Shows the selected tab
     document.querySelector("#tabs").addEventListener("click", e => {
         if (e.target.nodeName == "BUTTON") {
             if (e.target.id == "tab-cast") {
@@ -14,6 +14,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 castTable.style.display = "none";
                 crewTable.style.display = "table";
             }
+        }
+    });
+    
+    // Displays the lightbox
+    document.querySelector("figure").addEventListener("click", () => {
+        lightbox.style.display = "flex";
+    });
+    
+    // Closes the lightbox
+    document.querySelector("#lightbox").addEventListener("click", (e) => {
+        if (e.target.nodeName != "IMG") {
+            lightbox.style.display = "none";
         }
     });
 });

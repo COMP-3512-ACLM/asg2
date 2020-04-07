@@ -33,7 +33,10 @@ $release = strtotime($movie["release_date"]); // This variable is used in two pl
         <!-- TODO: create header via PHP -->
         <main>
             <div id="card">
-                <img src="https://image.tmdb.org/t/p/w185/<?=$movie["poster_path"]; ?>" />
+                <figure id="poster">
+                    <img src="https://image.tmdb.org/t/p/w185/<?=$movie["poster_path"]; ?>" />
+                    <div><span class=icon>🔍</span></div>
+                </figure>
                 <div id="info">
                     <h1><?=$movie["title"]; ?></h1>
                     <p><?=$movie["tagline"]; ?></p>
@@ -201,5 +204,9 @@ $release = strtotime($movie["release_date"]); // This variable is used in two pl
                 </div>
             </div>
         </main>
+        <div id="lightbox">
+            <div></div><!-- Overlay -->
+            <img src="https://image.tmdb.org/t/p/w500/<?=$movie["poster_path"]; ?>" />
+        </div>
     </body>
 </html>
