@@ -1,6 +1,6 @@
 @media only screen and (max-width: 600px) {
     /* TODO: remove; this is temporary */
-    main.browse {
+    main {
         flex-direction: column;
         height: 100%;
     }
@@ -14,8 +14,6 @@
         z-index: 1;
         
         transition-property: height;
-        
-        border-bottom: 1px solid black; /* TODO: remove; this is temporary */
     }
     
     #filters.hidden {

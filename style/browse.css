@@ -1,0 +1,219 @@
+/******************************
+
+Styling for browse-movies.php
+
+******************************/
+
+main {
+    display: flex;
+    height: 100vh;
+}
+
+/******************************
+Filter panel styling
+******************************/
+
+#filters {
+    width: var(--filters-width);
+    min-width: var(--filters-width); /* Prevents the filters panel from being "eaten" by the results panel when the viewport size is too small */
+    
+    overflow: hidden; /* For hiding the contents when toggled */
+    padding: 0; /* Otherwise, the panel still shows when width is 0 */
+    
+    background-color: white; /* TODO: change colour */
+}
+
+#filters.hidden {
+    width: 0;
+    min-width: 0;
+}
+
+/* This ensures that the header isn't wrapped when hidden */
+#filters h1 {
+    white-space: nowrap;
+    /width: calc(var(--filters-width) - var(--container-padding) * 2);
+}
+
+#filters form, #filters h1 {
+    margin: var(--container-padding); /* This acts as the padding removed earlier */
+}
+
+#filters button {
+    margin: auto;
+}
+
+#filters fieldset {
+    margin-bottom: 1rem;
+}
+
+#filters fieldset div {
+    margin-bottom: .375rem;
+    
+    display: grid;
+    
+    /*  Note: Exact, static units are used here to maintain the panel's contents when toggling.
+        With relative sizes, the panel contents will shift around as the panel is toggled.
+        The sum of these variables should equal the --filters-width variable minus padding. */
+    --radio-size: 2rem;
+    --label-size: 4rem;
+    --input-size: 12rem;
+    --output-size: 2rem;
+    
+    grid-template-columns: var(--radio-size) var(--label-size)
+                            var(--input-size) var(--output-size);
+}
+
+/* The button container */
+#filters form > div {
+    display: grid;
+    grid-gap: 1rem;
+    
+    /* Note that static units are used here again, for the same purpose as above. */
+    grid-template-columns: repeat(2, calc(var(--filters-width) / 2 - 1rem));
+}
+
+#filters input[type=text], #filters input[type=range] {
+    grid-column: 3;
+    
+    width: 100%;
+}
+
+#filters input[type=text] {
+    grid-column-end: 5;
+}
+
+#filters, #results-panel {
+    transition: .5s ease;
+    transition-property: width, min-width;
+}
+
+/******************************
+Search results styling
+******************************/
+
+/* The "sort by" bar */
+
+#sortbar {
+    display: grid;
+    grid-template-columns: auto repeat(3, 5em);
+}
+
+#sortbar span {
+    margin: auto;
+    user-select: none;
+    
+    opacity: 75%; /* Slightly transparent when not selected */
+}
+
+#sortbar span:hover {
+    cursor: pointer;
+    
+    opacity: 100%;
+}
+
+/* Only show sort direction when selected */
+#sortbar span::after {
+    opacity: 0;
+}
+#sortbar span.selected, #sortbar span.selected::after {
+    opacity: 100%;
+}
+
+/* Show appropriate arrow for sort direction */
+#sortbar span[data-sortdir="1"]::after {
+    content: " ▴";
+}
+#sortbar span[data-sortdir="-1"]::after {
+    content: " ▾";
+}
+
+/* The toggle button */
+
+#hide {
+    margin-left: -2rem; /* This should match the left padding of the results panel */
+    background: none;
+    border: none;
+    
+    position: fixed;
+    
+    font-size: 2rem;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    padding: 0;
+    
+    opacity: 75%;
+}
+
+/* Displays the appropriate arrow for the toggle button */
+#hide::after {
+    content: ">";
+}
+
+.open #hide::after {
+    content: "<";
+}
+
+#hide:hover {
+    opacity: 100%;
+}
+
+/* Search results */
+
+#results-panel {
+    padding-left: 2rem;
+    flex-grow: 1;
+    
+    overflow-y: scroll;
+}
+
+#results li {
+    display: flex;
+    
+    margin-bottom: 1rem;
+    
+    height: 138px; /* Matches poster */
+    min-width: 512px;
+    max-width: 1024px;
+    
+    background-color: white; /* TODO: change colour;*/
+}
+
+#results li div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+    padding: .5rem 1rem;
+    
+    width: 100%;
+}
+
+#results li p {
+    grid-column: 1 / span 2;
+    
+    width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#results li button {
+    grid-column: 2;
+}
+
+#results li h2, #results .rating {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#results .rating {
+    text-align: right;
+}
+
+#results li h2, #results li span {
+    margin: auto 0;
+}
+
+#results .year {
+    opacity: 75%;
+}
