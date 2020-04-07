@@ -27,7 +27,7 @@ $release = strtotime($movie["release_date"]); // This variable is used in two pl
         <link rel="stylesheet" href="style/style.css" />
         <link rel="stylesheet" href="style/single-movie.css" />
         <link rel="stylesheet" href="style/mobile.css" />
-        <script src="script/browse.js"></script>
+        <script src="script/single-movie.js"></script>
     </head>
     <body>
         <!-- TODO: create header via PHP -->
@@ -133,8 +133,10 @@ $release = strtotime($movie["release_date"]); // This variable is used in two pl
                 <!-- Production -->
                 <div id="production">
                     <h2>Production</h2>
-                    <button>Cast</button>
-                    <button>Crew</button>
+                    <div id="tabs">
+                        <button id="tab-cast">Cast</button>
+                        <button id="tab-crew">Crew</button>
+                    </div>
                     <table id="cast">
                         <thead>
                             <tr>

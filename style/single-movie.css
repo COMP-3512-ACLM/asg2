@@ -66,6 +66,14 @@ main > div:not(#card) {
     white-space: nowrap;
 }
 
+#tabs {
+    display: flex;
+}
+
+#tabs button {
+    flex-grow: 1;
+}
+
 #production {
     grid-column: 2;
     grid-row: 1 / span 3;
