@@ -89,6 +89,9 @@ header nav {
 header nav input {
     height: 1.25rem;
     margin: 0 1rem;
+    
+    /* Ensures the search bar remains in its spot regardless of the number of links */
+    grid-column: 5; 
 }
 
 header nav a {
@@ -123,7 +126,14 @@ header .logo {
     background: none;
     border: none;
     
+    height: 80%;
+    
     display: none;
+}
+
+#menu:hover {
+    background-color: lightgray;
+    cursor: pointer;
 }
 
 /* From https://www.w3schools.com/howto/howto_css_menu_icon.asp */
