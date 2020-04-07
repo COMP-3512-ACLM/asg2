@@ -12,25 +12,25 @@ small > span {
     margin: 0 .1rem;
 }
 
-small > span:first-child, #genres {
-    margin-right: 2rem;
+small > span:first-child {
+    margin-right: 1rem;
 }
 
-small > span:last-child::before {
-    margin-right: .6rem;
+small > span:not(:first-child):not(:last-child)::after {
     content: "|";
 }
 
-#genres span {
-    border: 1px solid;
-    border-radius: 10px;
-    padding: 0 .375rem;
-    margin: 0 2px;
+#genres span:not(:last-child)::after {
+    content: ", "
 }
 
 #links {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+}
+
+/* Puts the favourite button at the front of the list (it is at the end of the list in the HTML for mobile styling) */
+#links button {
+    grid-row: 1;
 }
 
 main > div:not(#card) {
@@ -69,4 +69,55 @@ main > div:not(#card) {
 #production {
     grid-column: 2;
     grid-row: 1 / span 3;
+}
+
+@media only screen and (max-width: 600px) {
+    hr {
+        display: none;
+    }
+    
+    #card {
+        grid-template-columns: 1fr;
+    }
+    
+    #card img {
+        margin: 0 auto;
+    }
+    
+    #info {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    
+    small {
+        display: grid;
+    }
+    
+    /* Don't show '|' separators */
+    small > span:not(:first-child):not(:last-child)::after {
+        content: "";
+    }
+    
+    #links {
+        display: grid;
+        grid-template-columns: max-content max-content 1fr;
+    }
+    
+    #links button {
+        grid-row: auto;
+        margin-left: auto;
+    }
+    
+    main > div:not(#card) {
+        grid-template-columns: auto;
+    }
+    
+    #score, #details, #keywords, #production {
+        grid-row: auto;
+        grid-column: auto;
+    }
+    
+    #production {
+        margin-bottom: 1rem;
+    }
 }

@@ -83,9 +83,9 @@ $release = strtotime($movie["release_date"]); // This variable is used in two pl
                     <p><?=$movie["overview"]; ?></p>
                 </div>
                 <div id="links">
-                    <button>Favourite</button>
                     <a href="https://www.imdb.com/title/<?=$movie["imdb_id"]; ?>">IMDb</a>
                     <a href="https://www.themoviedb.org/movie/<?=$movie["tmdb_id"]; ?>">TMDD</a>
+                    <button>Favourite</button>
                 </div>
             </div>
             <div>
