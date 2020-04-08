@@ -9,7 +9,7 @@ General style for all pages
 }
 
 :root {
-    --header-height: 10rem;
+    --header-height: 3rem;
     --container-padding: 1rem;
     --filters-width: 22rem;
 }
@@ -72,3 +72,93 @@ button {
 .star.filled {
     color: gold;
 }
+
+.logo {
+    user-select: none;
+}
+
+/******************************
+Header
+******************************/
+
+header {
+    display: flex;
+    align-items: center;
+    
+    height: var(--header-height);
+    
+    background-color: white; /* TODO: change colour */
+}
+
+header nav {
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: repeat(4, minmax(6rem, 8rem)) auto repeat(2, minmax(6rem, 8rem));
+    
+    align-items: center;
+    
+    width: 100%;
+    
+    border-left: 1px solid; /* TODO: change colour */
+}
+
+header nav input {
+    height: 1.25rem;
+    margin: 0 1rem;
+    
+    /* Ensures the search bar remains in its spot regardless of the number of links */
+    grid-column: 5; 
+}
+
+header nav a {
+    text-align: center;
+    height: 1rem;
+    padding: 1rem;
+}
+
+header nav a:hover {
+    background-color: lightgray;
+}
+
+header nav a.important {
+    background-color: orange; /* TODO: change colour */
+}
+
+header nav a.important:hover {
+    background-color: darkorange; /* TODO: change colour */
+}
+
+header nav a.login {
+    text-transform: uppercase;
+    border-left: 1px solid; /* TODO: change colour */
+}
+
+header .logo {
+    font-size: 2rem;
+    margin: 0 1rem;
+}
+
+#menu {
+    background: none;
+    border: none;
+    
+    height: 80%;
+    
+    display: none;
+}
+
+#menu:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+/* From https://www.w3schools.com/howto/howto_css_menu_icon.asp */
+#menu div {
+    --bar-height: 4px;
+    
+    width: calc(var(--bar-height) * 7);
+    height: var(--bar-height);
+    background-color: black;
+    margin: var(--bar-height) 0;
+}
+
