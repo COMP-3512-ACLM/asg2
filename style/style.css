@@ -139,6 +139,12 @@ Landing page
     margin: 0 2rem;
 }
 
+#credit {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+}
+
 /******************************
 Header
 ******************************/

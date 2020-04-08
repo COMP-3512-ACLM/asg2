@@ -36,6 +36,7 @@ include "includes/helpers.inc.php";
                 <a class="login important">Sign Up</a>
             </div>
         </div>
+        <p id="credit">Hero image credit goes here</p>
         <!-- END Logged out version -->
         <?php
         }
