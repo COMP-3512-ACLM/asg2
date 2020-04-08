@@ -92,73 +92,7 @@ include "includes/helpers.inc.php";
                     <span data-sortid="vote_average" data-sortdir="1">Rating</span>
                     <span data-sortid="release_date" data-sortdir="1">Year</span>
                 </div>
-                <ul id="results">
-                    <li>
-                        <img src="https://image.tmdb.org/t/p/w92/wOBKAoUJZb5qTsWv5XXvVV2vUzz.jpg" class="clickable">
-                        <div>
-                            <h2 class="clickable">Movie Title</h2>
-                            <span class="rating">
-                                8.3
-                                <span class="star icon">★</span>
-                            </span>
-                            <span class="year">1941</span>
-                            <p>This is where the overview goes. If it is too long it will overflow with an ellipsis. Here is some more text so it overflows. Blah blah blah. I am an overview. Here is some more text.</p>
-                            <button>View</button>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="https://image.tmdb.org/t/p/w92/wOBKAoUJZb5qTsWv5XXvVV2vUzz.jpg">
-                        <div>
-                            <h2>Movie Title</h2>
-                            <span class="rating">
-                                8.3
-                                <span class="star icon">★</span>
-                            </span>
-                            <span class="year">1941</span>
-                            <p>This is where the overview goes. If it is too long it will overflow with an ellipsis. Here is some more text so it overflows. Blah blah blah. I am an overview. Here is some more text.</p>
-                            <button>View</button>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="https://image.tmdb.org/t/p/w92/wOBKAoUJZb5qTsWv5XXvVV2vUzz.jpg">
-                        <div>
-                            <h2>Movie Title</h2>
-                            <span class="rating">
-                                8.3
-                                <span class="star icon">★</span>
-                            </span>
-                            <span class="year">1941</span>
-                            <p>This is where the overview goes. If it is too long it will overflow with an ellipsis. Here is some more text so it overflows. Blah blah blah. I am an overview. Here is some more text.</p>
-                            <button>View</button>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="https://image.tmdb.org/t/p/w92/wOBKAoUJZb5qTsWv5XXvVV2vUzz.jpg">
-                        <div>
-                            <h2>Movie Title</h2>
-                            <span class="rating">
-                                8.3
-                                <span class="star icon">★</span>
-                            </span>
-                            <span class="year">1941</span>
-                            <p>This is where the overview goes. If it is too long it will overflow with an ellipsis. Here is some more text so it overflows. Blah blah blah. I am an overview. Here is some more text.</p>
-                            <button>View</button>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="https://image.tmdb.org/t/p/w92/wOBKAoUJZb5qTsWv5XXvVV2vUzz.jpg">
-                        <div>
-                            <h2>Movie Title</h2>
-                            <span class="rating">
-                                8.3
-                                <span class="star icon">★</span>
-                            </span>
-                            <span class="year">1941</span>
-                            <p>This is where the overview goes. If it is too long it will overflow with an ellipsis. Here is some more text so it overflows. Blah blah blah. I am an overview. Here is some more text.</p>
-                            <button>View</button>
-                        </div>
-                    </li>
-                </ul>
+                <ul id="results"></ul>
             </div>
         </main>
     </body>
