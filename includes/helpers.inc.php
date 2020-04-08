@@ -15,7 +15,9 @@ function outputHeader() {
     outputNavLink("Favourites", "#"); /* TODO: check if logged in */
     outputNavLink("About", "#");
     
-    echo "<input type='text' placeholder='Search movies' />";
+    echo "<form action='browse-movies.php'>";
+    echo "<input name='search' type='text' placeholder='Search movies' />";
+    echo "</form>";
     
     /* TODO: check if logged in */
     echo "<a href='#' class='login'>Login</a>";
