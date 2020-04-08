@@ -6,7 +6,6 @@
         <link rel="stylesheet" href="style/reset.css" />
         <link rel="stylesheet" href="style/style.css" />
         <link rel="stylesheet" href="style/browse.css" />
-        <link rel="stylesheet" href="style/mobile.css" />
         <script src="script/browse.js"></script>
     </head>
     <body>

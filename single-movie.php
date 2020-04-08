@@ -26,7 +26,6 @@ $release = strtotime($movie["release_date"]); // This variable is used in two pl
         <link rel="stylesheet" href="style/reset.css" />
         <link rel="stylesheet" href="style/style.css" />
         <link rel="stylesheet" href="style/single-movie.css" />
-        <link rel="stylesheet" href="style/mobile.css" />
         <script src="script/single-movie.js"></script>
     </head>
     <body>
