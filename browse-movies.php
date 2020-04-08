@@ -11,6 +11,7 @@ include "includes/helpers.inc.php";
         <link rel="stylesheet" href="style/reset.css" />
         <link rel="stylesheet" href="style/style.css" />
         <link rel="stylesheet" href="style/browse.css" />
+        <script src="script/header.js"></script>
         <script src="script/browse.js"></script>
     </head>
     <body>
@@ -55,24 +56,24 @@ include "includes/helpers.inc.php";
                         <div>
                             <input name="rating" type="radio" />
                             <label>Below</label>
-                            <input name="below" type="range" min="0" max="10" value="5" />
-                            <output for="below">1</output>
+                            <input name="below" type="range" min="1" max="10" value="5" />
+                            <output for="below">5</output>
                         </div>
                         <!--Above-->
                         <div>
                             <input name="rating" type="radio" />
                             <label>Above</label>
-                            <input name="above" type="range" min="0" max="10" value="5" />
-                            <output for="above">3</output>
+                            <input name="above" type="range" min="1" max="10" value="5" />
+                            <output for="above">5</output>
                         </div>
                         <!--Between-->
                         <div>
                             <input name="rating" type="radio" />
                             <label>Between</label>
-                            <input name="between-lower" type="range" min="0" max="10" value="5" />
+                            <input name="between-lower" type="range" min="1" max="10" value="5" />
                             <output for="between-lower">5</output>
-                            <input name="between-upper" type="range" min="0" max="10" value="5" />
-                            <output for="between-upper">10</output>
+                            <input name="between-upper" type="range" min="1" max="10" value="5" />
+                            <output for="between-upper">5</output>
                         </div>
                     </fieldset>
                     <div>
