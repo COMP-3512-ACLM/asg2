@@ -7,5 +7,8 @@
     <body>
         <h1>Assignment 2</h1>
         <p>Testing PHP</p>
+        <form action="browse-movies.php">
+            <input name="search" type="text" placeholder="Search movies" />
+        </form>
     </body>
 </html>
