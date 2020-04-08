@@ -1,3 +1,8 @@
+<?php
+
+include "includes/helpers.inc.php";
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,7 +14,7 @@
         <script src="script/browse.js"></script>
     </head>
     <body>
-        <!-- TODO: create header via PHP -->
+        <?php outputHeader(); ?>
         <main class="browse">
             <!--Filters-->
             <div id="filters" class="container">
