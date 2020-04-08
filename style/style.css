@@ -28,6 +28,23 @@ output {
     font-size: .75em;
 }
 
+dl {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+}
+
+dd {
+    margin-left: 1rem;
+}
+
+table {
+    width: 100%;
+}
+
+tr:nth-of-type(even) {
+    background-color: rgba(0, 0, 0, 10%); /* TODO: change colour */
+}
+
 .container {
     padding: var(--container-padding);
 }
