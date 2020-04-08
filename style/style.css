@@ -217,7 +217,7 @@ The header changes at a larger size than mobile
     }
     
     /* Puts the search bar at the top of the menu */
-    header nav input {
+    header nav form {
         grid-row: 1;
         grid-column: 1;
     }
