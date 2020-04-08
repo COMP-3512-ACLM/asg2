@@ -191,7 +191,7 @@ Search results styling
     text-overflow: ellipsis;
 }
 
-#results li button {
+#results li .button {
     grid-column: 2;
 }
 
