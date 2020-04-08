@@ -1,7 +1,3 @@
-body {
-    width: auto;
-}
-
 main {
     display: flex;
     height: calc(100vh - var(--header-height));
