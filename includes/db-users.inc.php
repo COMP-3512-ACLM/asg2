@@ -3,11 +3,13 @@ require_once 'db-common.inc.php';
 $errorMessage = "";
 $loginError = "";
 if (isset($_POST['loginButton'])){
-    login();
+    $newConnection = getConnection();
+    login($newConnection);
 }
 
 if (isset($_POST['signupSubmit'])){
-    registration();
+    $newConnection = getConnection();
+    registration($newConnection);
 }
 
 //log in functions--------------------------------------------------------------
@@ -15,11 +17,9 @@ function isLoggedIn() {
     return isset($_SESSION['userLogin']);
 }
 
-function login(){
+function login($connection){
     try{
-        $connection = getConnection();
         if (isset($_POST['email']) && isset($_POST['password']) && $_POST['email'] != "" && $_POST['password'] != ""){
-            
             $sql = 'select * from users where email=?';
             $emailEntered = $_POST['email'];
             $user = runQuery ($connection, $sql, array($emailEntered));
@@ -59,7 +59,7 @@ function checkPassword($row, $passwordEntered){
 
 //Sign up functions ---------------------------------------------------------------------------
 //this function will set the form data to the session and call upon other functions to sign up
-function registration(){
+function registration($connection){
     //this will add the following form data the session, so if the user enters invalid info it will send them back with the data there
     $_SESSION['first'] = $_POST['fName'];
     $_SESSION['last'] = $_POST['lName'];
@@ -77,14 +77,12 @@ function registration(){
     }
     
     if($validEmail && $validPass){
-        echo "YAT";
-        createAccount($_POST['newEmail'], $_POST['newPass']);
+        createAccount($_POST['newEmail'], $_POST['newPass'], $connection);
     }
 }
 //this function will create the account with the info from the form
-function createAccount($email, $password){
+function createAccount($email, $password, $connection){
     try{
-        $connection = getConnection(); 
         $hashedPass = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
         $userId = getId();
         $sql = "insert into users (id, firstname, lastname, city, country, email, password, salt, password_sha256) values (?, ?, ?,  ?, ?, ?, ?, null, null)";
