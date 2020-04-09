@@ -3,6 +3,7 @@ session_start();
 
 require_once 'includes/db-users.inc.php';
 require_once 'includes/db-common.inc.php';
+require_once 'includes/helpers.inc.php';
 
 ?>
 <!DOCTYPE html>
@@ -15,6 +16,7 @@ require_once 'includes/db-common.inc.php';
         <script src="script/browse.js"></script>
     </head>
     <body>
+        <?php outputHeader(); ?>
         <main>
             <h1>Log In</h1>
             <p><?php echo $loginError; ?></p>
