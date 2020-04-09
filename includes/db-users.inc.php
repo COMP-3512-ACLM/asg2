@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/db-common.inc.php';
+require_once 'db-common.inc.php';
 $errorMessage = "";
 $loginError = "";
 if (isset($_POST['loginButton'])){
@@ -11,6 +11,10 @@ if (isset($_POST['signupSubmit'])){
 }
 
 //log in functions--------------------------------------------------------------
+function isLoggedIn() {
+    return isset($_SESSION['userLogin']);
+}
+
 function login(){
     try{
         $connection = getConnection();
