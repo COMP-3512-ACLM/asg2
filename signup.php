@@ -15,7 +15,6 @@ if (isLoggedIn()) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="style/reset.css" />
         <link rel="stylesheet" href="style/style.css" />
-        <script src="script/browse.js"></script>
     </head>
     <body>
         <?php outputHeader(); ?>
