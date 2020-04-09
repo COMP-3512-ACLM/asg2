@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-require_once 'Users.php';
-require_once 'db-common.inc.php';
+require_once 'includes/db-users.inc.php';
+require_once 'includes/db-common.inc.php';
 
     
 // now retrieve galleries 
