@@ -48,7 +48,7 @@ function checkPassword($row, $passwordEntered){
     if (password_verify($passwordEntered, $userPass)){
         if(!isset($_SESSION['userLogin'])){
             $_SESSION['userLogin'] = $row;
-            header("Location: "); //add the home page
+            header("Location: index.php"); //add the home page
         }     
     }
     else{//incorrect password
@@ -58,7 +58,9 @@ function checkPassword($row, $passwordEntered){
 //end of log in functions--------------------------------------------------
 
 //Sign up functions ---------------------------------------------------------------------------
+//this function will set the form data to the session and call upon other functions to sign up
 function registration(){
+    //this will add the following form data the session, so if the user enters invalid info it will send them back with the data there
     $_SESSION['first'] = $_POST['fName'];
     $_SESSION['last'] = $_POST['lName'];
     $_SESSION['uCountry'] = $_POST['country'];
@@ -79,7 +81,7 @@ function registration(){
         createAccount($_POST['newEmail'], $_POST['newPass']);
     }
 }
-
+//this function will create the account with the info from the form
 function createAccount($email, $password){
     try{
         $connection = getConnection(); 
@@ -87,6 +89,13 @@ function createAccount($email, $password){
         $userId = getId();
         $sql = "insert into users (id, firstname, lastname, city, country, email, password, salt, password_sha256) values (?, ?, ?,  ?, ?, ?, ?, null, null)";
         $tt = runQuery ($connection, $sql, array($userId, $_SESSION['first'], $_SESSION['last'], $_SESSION['uCity'], $_SESSION['uCountry'], $_SESSION['uEmail'], $hashedPass));
+        //this will add the session and redirect them
+        $userSql = "select * from users where email=$email";
+        $row = runQuery($connection, $sql, null);
+        if(!isset($_SESSION['userLogin'])){//checks to see if a user is already loged in
+            $_SESSION['userLogin'] = $row->fetch(PDO::FETCH_ASSOC); //set the session to the row of user data from the database
+            //header("Location: index.php"); //this is commented out for now -- add the home page
+        }//end of !isset
         $connection = null;
         session_unset();
     }catch (PDOException $e){
@@ -94,6 +103,7 @@ function createAccount($email, $password){
     }
 }
 
+//this function will get the id of the new user by counting the amount of current user + 1
 function getId(){
     try{
         $connection = getConnection(); 
@@ -115,25 +125,23 @@ function validateEmail($newEmail){
         $connection = null;
         $valid = true;
         foreach ($allUsers as $user){
-            if($user['email'] == $newEmail){
+            if($user['email'] == $newEmail){// if there is a match set the the valid flag to false
                 $valid = false;
-            }
-            
-        }
-        if(!$valid){//directs them to the home page
+            }//end of if
+        }//end of foreach
+        if(!$valid){
             $GLOBALS['errorMessage'] = "The email provided is already in use, please try a different email.";
-            
         }
         return $valid;
     }catch (PDOException $e){
         die( $e->getMessage() );
-    }
-    
+    } 
 }
 
+//this function will make sure the 2 passwords match 
 function validatePassword($password1, $password2){
     $result = null;
-    if ($password1 == $password2){
+    if ($password1 == $password2){//if the password and confirm password match
         $result = true;
     }
     else{
@@ -150,7 +158,7 @@ function logout(){
     session_unset();
     session_destroy();
     //$_SESSION['userLogin'] = "";
-    //header("Location: Index.php")
+    //header("Location: index.php")
 }
 
 //this will display the user info in a list
