@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once 'includes/db-users.inc.php'; 
 require_once 'includes/db-common.inc.php';
 require_once 'includes/helpers.inc.php';
