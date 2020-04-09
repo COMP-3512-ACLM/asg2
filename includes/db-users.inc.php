@@ -146,7 +146,10 @@ function validatePassword($password1, $password2){
 
 //log out function
 function logout(){
-    $_SESSION['userLogin'] = "";
+    session_start();
+    session_unset();
+    session_destroy();
+    //$_SESSION['userLogin'] = "";
     //header("Location: Index.php")
 }
 
