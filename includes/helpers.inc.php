@@ -12,14 +12,22 @@ function outputHeader() {
     
     outputNavLink("Home", "#");
     outputNavLink("Browse", "#");
-    outputNavLink("Favourites", "#"); /* TODO: check if logged in */
+    if (isLoggedIn()) {
+        outputNavLink("Favourites", "#");
+    }
     outputNavLink("About", "#");
     
     echo "<input type='text' placeholder='Search movies' />";
     
-    /* TODO: check if logged in */
-    echo "<a href='#' class='login'>Login</a>";
-    echo "<a href='#' class='login important'>Sign Up</a>";
+    if (isLoggedIn()) {
+        echo "<span>";
+        displayFirst();
+        echo "</span>";
+        echo "<a href='#' class='login'>Log Out</a>";
+    } else {
+        echo "<a href='#' class='login'>Login</a>";
+        echo "<a href='#' class='login important'>Sign Up</a>";
+    }
     
     echo "</nav>";
     
