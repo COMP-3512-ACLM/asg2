@@ -23,7 +23,7 @@ function outputHeader() {
         echo "<span>";
         displayFirst();
         echo "</span>";
-        echo "<a href='#' class='login'>Log Out</a>";
+        echo "<a href='logout.php' class='login'>Log Out</a>";
     } else {
         echo "<a href='#' class='login'>Login</a>";
         echo "<a href='#' class='login important'>Sign Up</a>";
