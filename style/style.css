@@ -163,6 +163,21 @@ header .logo {
 }
 
 /******************************
+Login and Sign Up
+******************************/
+
+form.login {
+    display: grid;
+    
+    margin: auto;
+    padding: 1rem;
+    
+    width: 40%;
+    min-width: 450px;
+    max-width: 800px;
+}
+
+/******************************
 
 Mobile
 
