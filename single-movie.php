@@ -1,5 +1,6 @@
 <?php
 
+include "includes/helpers.inc.php";
 include "includes/db-movies.inc.php";
 
 $connection = null;
@@ -29,7 +30,7 @@ $release = strtotime($movie["release_date"]); // This variable is used in two pl
         <script src="script/single-movie.js"></script>
     </head>
     <body>
-        <!-- TODO: create header via PHP -->
+        <?php outputHeader(); ?>
         <main>
             <div id="card">
                 <figure id="poster">
