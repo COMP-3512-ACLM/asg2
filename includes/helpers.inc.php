@@ -5,21 +5,23 @@ define("LOGO", "Logo");
 function outputHeader() {
     echo "<header>";
     
-    echo "<h1 class='logo'>" . LOGO . "</h1>";
+    echo '<img src="film.png">';
     echo "<button id='menu'><div></div><div></div><div></div></button>";
     
     echo "<nav>";
     
     outputNavLink("Home", "#");
-    outputNavLink("Browse", "#");
+    outputNavLink("Browse", "http://localhost/asg2-css/browse-movies.php");
     outputNavLink("Favourites", "#"); /* TODO: check if logged in */
-    outputNavLink("About", "#");
+    outputNavLink("About", "http://localhost/asg2-css/about.php");
     
-    echo "<input type='text' placeholder='Search movies' />";
+    echo "<form action='browse-movies.php'>";
+    echo "<input name='search' type='text' placeholder='Search movies' />";
+    echo "</form>";
     
     /* TODO: check if logged in */
-    echo "<a href='#' class='login'>Login</a>";
-    echo "<a href='#' class='login important'>Sign Up</a>";
+    echo "<a href='http://localhost/asg2-css/loginPage.php' class='login'>Login</a>";
+    echo "<a href='http://localhost/asg2-css/signupPage.php' class='login important'>Sign Up</a>";
     
     echo "</nav>";
     

@@ -1,3 +1,8 @@
+<?php
+
+include "includes/helpers.inc.php";
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,10 +11,11 @@
         <link rel="stylesheet" href="style/reset.css" />
         <link rel="stylesheet" href="style/style.css" />
         <link rel="stylesheet" href="style/browse.css" />
+        <script src="script/header.js"></script>
         <script src="script/browse.js"></script>
     </head>
     <body>
-        <!-- TODO: create header via PHP -->
+        <?php outputHeader(); ?>
         <main class="browse">
             <!--Filters-->
             <div id="filters" class="container">
@@ -18,29 +24,29 @@
                     <!--Title-->
                     <fieldset>
                         <legend>Title</legend>
-                        <input type="text" />
+                        <input type="text" id="title"/>
                     </fieldset>
                     <!--Year-->
                     <fieldset>
                         <legend>Year</legend>
                         <!--Before-->
                         <div>
-                            <input name="year" type="radio" />
-                            <label>Before</label>
-                            <input type="text" />
+                            <input type="radio" id="beforeYearRadio" name="years" value="beforeYear" class="year">
+                                <label>Before</label>
+                            <input type="text" id="beforeYear" min="0" max="2020"  class="yearIn"><br/>
                         </div>
                         <!--After-->
                         <div>
-                            <input name="year" type="radio" />
-                            <label>After</label>
-                            <input type="text" />
+                            <input type="radio" id="afterYearRadio" name="years" value="afterYear" class="year">
+                                <label>After</label>
+                            <input type="text" id="afterYear" min="0" max="2019" class="yearIn">
                         </div>
                         <!--Between-->
                         <div>
-                            <input name="year" type="radio" />
-                            <label>Between</label>
-                            <input type="text" />
-                            <input type="text" />
+                            <input type="radio" id="between" name="years" value="between" class="year">
+                                    <label>Between</label>
+                            <input type="text" id="betweenStart" min="0" max="2020" placeholder="1900" class="yearIn">
+                            <input type="text" id="betweenEnd" min="0" max="2020" placeholder="2019" class="yearIn">
                         </div>
                     </fieldset>
                     <!--Rating-->
@@ -48,30 +54,33 @@
                         <legend>Rating</legend>
                         <!--Below-->
                         <div>
-                            <input name="rating" type="radio" />
-                            <label>Below</label>
-                            <input name="below" type="range" min="0" max="10" value="5" />
-                            <output for="below">1</output>
+                            <input type="radio" id="belowRateRadio" name="rating" value="belowRate" class="rate">
+                                <label>Below</label>
+                            
+                            <input name="below" type="range" min="1" max="10" value="5" id="belowRate" class="rateIn"/>
+                            <output for="below">5</output>
                         </div>
                         <!--Above-->
                         <div>
-                            <input name="rating" type="radio" />
-                            <label>Above</label>
-                            <input name="above" type="range" min="0" max="10" value="5" />
-                            <output for="above">3</output>
+                            <input type="radio" id="aboveRateRadio" name="rating" value="aboveRate" class="rate">
+                                <label>Above</label>
+                            
+                            <input name="above" type="range" min="1" max="10" value="5" id="aboveRate"  class="rateIn"/>
+                            <output for="above">5</output>
                         </div>
                         <!--Between-->
                         <div>
-                            <input name="rating" type="radio" />
-                            <label>Between</label>
-                            <input name="between-lower" type="range" min="0" max="10" value="5" />
+                            <input type="radio" id="betweenRating" name="rating" value="rate" class="rate">
+                                <label>Between</label>
+                            
+                            <input name="between-lower" type="range" min="1" max="10" value="5" id="rateStart" class="rateIn"/>
                             <output for="between-lower">5</output>
-                            <input name="between-upper" type="range" min="0" max="10" value="5" />
-                            <output for="between-upper">10</output>
+                            <input name="between-upper" type="range" min="1" max="10" value="5" id="rateEnd" class="rateIn"/>
+                            <output for="between-upper">5</output>
                         </div>
                     </fieldset>
                     <div>
-                        <button>Filter</button>
+                        <button id="filter" type="button">Filter</button>
                         <button>Clear</button>
                     </div>
                 </form>
@@ -79,80 +88,17 @@
             <!--Results-->
             <div id="results-panel" class="container"><!-- This could have a better ID -->
                 <button id="hide"></button>
-                <h1>Search Results</h1>
-                <div id="sortbar">
-                    <h2>Sort by:</h2>
-                    <span data-sortid="title" data-sortdir="1">Title</span>
-                    <span data-sortid="rating" data-sortdir="1">Rating</span>
-                    <span data-sortid="year" data-sortdir="1">Year</span>
+                <div id="sort-headers"> <!-- This div was added in -->
+                    <h1>Search Results</h1>
+                    <div id="sortbar">
+                        <h2>Sort by:</h2>
+                        <span data-sortid="title" data-sortdir="1">Title</span>
+                        <span data-sortid="vote_average" data-sortdir="1">Rating</span>
+                        <span data-sortid="release_date" data-sortdir="1">Year</span>
+                    </div>
                 </div>
-                <ul id="results">
-                    <li>
-                        <img src="https://image.tmdb.org/t/p/w92/wOBKAoUJZb5qTsWv5XXvVV2vUzz.jpg" class="clickable">
-                        <div>
-                            <h2 class="clickable">Movie Title</h2>
-                            <span class="rating">
-                                8.3
-                                <span class="star icon">★</span>
-                            </span>
-                            <span class="year">1941</span>
-                            <p>This is where the overview goes. If it is too long it will overflow with an ellipsis. Here is some more text so it overflows. Blah blah blah. I am an overview. Here is some more text.</p>
-                            <button>View</button>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="https://image.tmdb.org/t/p/w92/wOBKAoUJZb5qTsWv5XXvVV2vUzz.jpg">
-                        <div>
-                            <h2>Movie Title</h2>
-                            <span class="rating">
-                                8.3
-                                <span class="star icon">★</span>
-                            </span>
-                            <span class="year">1941</span>
-                            <p>This is where the overview goes. If it is too long it will overflow with an ellipsis. Here is some more text so it overflows. Blah blah blah. I am an overview. Here is some more text.</p>
-                            <button>View</button>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="https://image.tmdb.org/t/p/w92/wOBKAoUJZb5qTsWv5XXvVV2vUzz.jpg">
-                        <div>
-                            <h2>Movie Title</h2>
-                            <span class="rating">
-                                8.3
-                                <span class="star icon">★</span>
-                            </span>
-                            <span class="year">1941</span>
-                            <p>This is where the overview goes. If it is too long it will overflow with an ellipsis. Here is some more text so it overflows. Blah blah blah. I am an overview. Here is some more text.</p>
-                            <button>View</button>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="https://image.tmdb.org/t/p/w92/wOBKAoUJZb5qTsWv5XXvVV2vUzz.jpg">
-                        <div>
-                            <h2>Movie Title</h2>
-                            <span class="rating">
-                                8.3
-                                <span class="star icon">★</span>
-                            </span>
-                            <span class="year">1941</span>
-                            <p>This is where the overview goes. If it is too long it will overflow with an ellipsis. Here is some more text so it overflows. Blah blah blah. I am an overview. Here is some more text.</p>
-                            <button>View</button>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="https://image.tmdb.org/t/p/w92/wOBKAoUJZb5qTsWv5XXvVV2vUzz.jpg">
-                        <div>
-                            <h2>Movie Title</h2>
-                            <span class="rating">
-                                8.3
-                                <span class="star icon">★</span>
-                            </span>
-                            <span class="year">1941</span>
-                            <p>This is where the overview goes. If it is too long it will overflow with an ellipsis. Here is some more text so it overflows. Blah blah blah. I am an overview. Here is some more text.</p>
-                            <button>View</button>
-                        </div>
-                    </li>
-                </ul>
+                
+                <ul id="results"></ul>
             </div>
         </main>
     </body>

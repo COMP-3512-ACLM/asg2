@@ -1,12 +1,36 @@
-/******************************
+/* READ If theres a comment with "CSS Change" then there has been new stuff added in from the base doc*/
 
-Styling for browse-movies.php
-
-******************************/
-
-main {
+main { /*CSS Change*/
     display: flex;
-    height: 100vh;
+    height: calc(100vh - var(--header-height));
+    background-color: steelblue;
+}
+
+header {
+    background-color: ghostwhite;
+    border: solid 1px black;
+}
+
+header img {
+    max-width: 70px;
+    max-height: 40px;
+}
+
+header nav a {
+    border: solid 1px black;
+}
+
+a:link {
+    color: firebrick;
+    text-decoration: none;
+}
+
+a:visited {
+    color: steelblue;
+}
+
+a:hover {
+    color: gray;
 }
 
 /******************************
@@ -20,7 +44,18 @@ Filter panel styling
     overflow: hidden; /* For hiding the contents when toggled */
     padding: 0; /* Otherwise, the panel still shows when width is 0 */
     
-    background-color: white; /* TODO: change colour */
+    background-color: black; /*CSS Change*/
+    color: white;
+}
+
+#filters legend { /* CSS for coloring the filter titles */ /*CSS Change*/
+    background-color: steelblue;
+    width: auto;
+    color: black;
+    text-decoration: underline;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 #filters.hidden {
@@ -32,14 +67,29 @@ Filter panel styling
 #filters h1 {
     white-space: nowrap;
     /width: calc(var(--filters-width) - var(--container-padding) * 2);
+    
+    color: black; /*CSS Change*/
+    font-size: 150%;
+    padding: 0.5em;
+    text-align: center;
+    text-decoration: overline underline;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    background-color: steelblue;
 }
 
 #filters form, #filters h1 {
     margin: var(--container-padding); /* This acts as the padding removed earlier */
 }
 
-#filters button {
+#filters button { /*CSS Change*/
     margin: auto;
+    
+    border-radius: 1em;
+    border: none;
+    color: white;
+    padding: 1em 2em;
+    text-align: center;
+    background-color: steelblue;
 }
 
 #filters fieldset {
@@ -93,9 +143,22 @@ Search results styling
 
 /* The "sort by" bar */
 
+#sort-headers {/* NEW Div tag added, sets colors for the upper sort bar background */ /*CSS&HTML Change*/ 
+    background-color: black;
+    color: white;
+}
+
 #sortbar {
     display: grid;
     grid-template-columns: auto repeat(3, 5em);
+
+    padding: 0.5em; /*CSS Change*/
+}
+
+#sortbar h2 { /*CSS Change*/
+    text-align: right;
+    color: white;
+    text-shadow: -1px 0 steelblue, 0 1px steelblue, 1px 0 steelblue, 0 -1px steelblue;
 }
 
 #sortbar span {
@@ -103,6 +166,11 @@ Search results styling
     user-select: none;
     
     opacity: 75%; /* Slightly transparent when not selected */
+    
+    background-color: cadetblue; /*CSS Change*/
+    width: 100%;
+    text-align: center;
+    border: solid 1px black;
 }
 
 #sortbar span:hover {
@@ -131,10 +199,10 @@ Search results styling
 
 #hide {
     margin-left: -2rem; /* This should match the left padding of the results panel */
-    background: none;
+    background: none; /*CSS Change*/
     border: none;
     
-    position: fixed;
+    position: absolute;
     
     font-size: 2rem;
     width: 2rem;
@@ -143,6 +211,9 @@ Search results styling
     padding: 0;
     
     opacity: 75%;
+    
+    color: white; /*CSS Change*/
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 /* Displays the appropriate arrow for the toggle button */
@@ -167,6 +238,13 @@ Search results styling
     overflow-y: scroll;
 }
 
+#results-panel h1 { /*CSS Change*/
+    font-size: 150%;
+    text-align: center;
+    color: white;
+    text-shadow: -1px 0 steelblue, 0 1px steelblue, 1px 0 steelblue, 0 -1px steelblue;
+}
+
 #results li {
     display: flex;
     
@@ -174,9 +252,10 @@ Search results styling
     
     height: 138px; /* Matches poster */
     min-width: 512px;
-    max-width: 1024px;
+    /* max-width: 1024px; Comments out so page looks better, uncomment if code is important*/ /*CSS Change*/
     
-    background-color: white; /* TODO: change colour;*/
+    background-color: ghostwhite;
+    border: solid 5px firebrick;
 }
 
 #results li div {
@@ -197,7 +276,7 @@ Search results styling
     text-overflow: ellipsis;
 }
 
-#results li button {
+#results li .button {
     grid-column: 2;
 }
 
@@ -229,6 +308,8 @@ Mobile
     main {
         flex-direction: column;
         height: 100%;
+        
+        min-width: 0;
     }
     
     #filters {
@@ -262,7 +343,7 @@ Mobile
     #hide {
         position: sticky;
         left: 0;
-        top: 29.5rem;
+        top: calc(29.5rem + var(--header-height));
         z-index: 2;
         
         margin-top: calc(var(--container-padding) * -1);
