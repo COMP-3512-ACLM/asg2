@@ -1,0 +1,23 @@
+body{
+    background-image: url('image\background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-size: 100% 100%;
+}
+
+#loged {
+    display: grid;
+    grid-template-columns: 49% 49%;
+    grid-template-rows: 18% 40% 40%;
+    grid-gap: 20px;
+}
+
+div {
+    background-color: gray;
+}
+
+#header {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
