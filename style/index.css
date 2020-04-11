@@ -1,0 +1,110 @@
+body {
+    background-image: url('../image/background.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#loged {
+    display: grid;
+    grid-template-columns: 49% 49%;
+    grid-template-rows: 18% 40% 40%;
+    grid-gap: 20px;
+}
+
+div {
+    background-color: steelblue;
+}
+
+#header {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+header img {
+    max-width: 70px;
+    max-height: 40px;
+}
+
+header nav a {
+    border: solid 1px black;
+}
+
+a:link {
+    color: firebrick;
+    text-decoration: none;
+}
+
+a:visited {
+    color: steelblue;
+}
+
+a:hover {
+    color: gray;
+}
+
+#UInfo
+{
+    border: dashed 5px black;
+    font-size: 150%;
+}
+
+#UInfo h2
+{
+    text-align: center;
+    font-size: 200%;
+    color: white;
+    text-shadow: -1px 0 powderblue, 0 1px powderblue, 1px 0 powderblue, 0 -1px powderblue;
+}
+
+#favorite
+{
+    border: dashed 5px black;
+    font-size: 150%;
+}
+
+#favorite h1
+{
+    text-align: center;
+    font-size: 200%;
+    color: white;
+    text-shadow: -1px 0 powderblue, 0 1px powderblue, 1px 0 powderblue, 0 -1px powderblue;
+}
+
+#recommend
+{
+    border: dashed 5px black;
+    font-size: 150%;
+}
+
+#recommend h2
+{
+    text-align: center;
+    font-size: 200%;
+    color: white;
+    text-shadow: -1px 0 powderblue, 0 1px powderblue, 1px 0 powderblue, 0 -1px powderblue;
+}
+
+#search
+{
+    border: dashed 5px black;
+}
+#search form
+{
+    text-align: center;
+    margin:auto;
+    margin-top: 10%;
+}
+#search input
+{
+    text-align: center;
+    height: 100px;
+    width: 500px;
+    font-size: 100%;
+}
+#search button
+{
+    height: 100px;
+    width: 100px;
+}

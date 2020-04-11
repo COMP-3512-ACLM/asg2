@@ -172,39 +172,39 @@ function getUserInfo(){
 
 //the following 5 functions are for the form to dipslay the previous data
 function displayFirst(){
-    if(isset($_SESSION['first'])){
-        echo $_SESSION['first'];
+    if(isset($_SESSION['userLogin'])){
+        echo $_SESSION['userLogin']['firstname'];
     }
     else{
         echo "";
     }
 }
 function displayLast(){
-    if(isset($_SESSION['last'])){
-        echo $_SESSION['last'];
+    if(isset($_SESSION['userLogin'])){
+        echo $_SESSION['userLogin']['lastname'];
     }
     else{
         echo "";
     }
 }
 function displayCity(){
-    if(isset($_SESSION['uCity'])){
-        echo $_SESSION['uCity'];
+    if(isset($_SESSION['userLogin'])){
+        echo $_SESSION['userLogin']['city'];
     }
     else{
         echo "";
     }
 }
 function displayCountry(){
-    if(isset($_SESSION['uCountry'])){
-        echo $_SESSION['uCountry'];
+    if(isset($_SESSION['userLogin'])){
+        echo $_SESSION['userLogin']['country'];
     }
     else{
         echo "";
     }
 }
 function displayEmail(){
-    if(isset($_SESSION['uEmail'])){
+    if(isset($_SESSION['userLogin'])){
         echo $_SESSION['uEmail'];
     }
     else{

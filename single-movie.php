@@ -1,6 +1,8 @@
 <?php
+session_start();
 include "includes/helpers.inc.php";
 include "includes/db-movies.inc.php";
+
 
 $connection = null;
 $movie = null;
@@ -85,9 +87,11 @@ $release = strtotime($movie["release_date"]); // This variable is used in two pl
                     <p id="synopsis"><?=$movie["overview"]; ?></p>
                 </div>
                 <div id="links">
+                    <form method='post' action='addToFavorites.php'>
+                        <button type='submit' name='favorite' value='<?=$movie["id"]; ?>'>Favorite</button>
+                    </form>
                     <a href="https://www.imdb.com/title/<?=$movie["imdb_id"]; ?>">IMDb</a>
                     <a href="https://www.themoviedb.org/movie/<?=$movie["tmdb_id"]; ?>">TMDD</a>
-                    <button>Favourite</button>
                 </div>
             </div>
              <!-- Score -->

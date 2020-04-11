@@ -11,10 +11,10 @@ function outputHeader() {
     
     echo "<nav>";
     
-    outputNavLink("Home", "#");
+    outputNavLink("Home", "http://localhost/asg2-combined/index.php");
     outputNavLink("Browse", "http://localhost/asg2-combined/browse-movies.php");
     if (isLoggedIn()) {
-        outputNavLink("Favourites", "#");
+        outputNavLink("Favorites", "http://localhost/asg2-combined/favorites.php");
     }
     outputNavLink("About", "http://localhost/asg2-combined/about.php");
     
