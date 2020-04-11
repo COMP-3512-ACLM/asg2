@@ -1,5 +1,5 @@
 <?php
-
+include "includes/helpers.inc.php";
 include "includes/db-movies.inc.php";
 
 $connection = null;
@@ -29,7 +29,7 @@ $release = strtotime($movie["release_date"]); // This variable is used in two pl
         <script src="script/single-movie.js"></script>
     </head>
     <body>
-        <!-- TODO: create header via PHP -->
+        <?php outputHeader(); ?>
         <main>
             <div id="card">
                 <figure id="poster">
@@ -82,7 +82,7 @@ $release = strtotime($movie["release_date"]); // This variable is used in two pl
                     </small>
                     <hr />
                     <h2>Overview</h2>
-                    <p><?=$movie["overview"]; ?></p>
+                    <p id="synopsis"><?=$movie["overview"]; ?></p>
                 </div>
                 <div id="links">
                     <a href="https://www.imdb.com/title/<?=$movie["imdb_id"]; ?>">IMDb</a>
@@ -90,8 +90,7 @@ $release = strtotime($movie["release_date"]); // This variable is used in two pl
                     <button>Favourite</button>
                 </div>
             </div>
-            <div>
-                <!-- Score -->
+             <!-- Score -->
                 <div id="score">
                     <h2>Score</h2>
                     <h3>Rating</h3>
@@ -104,6 +103,9 @@ $release = strtotime($movie["release_date"]); // This variable is used in two pl
                     <h3>Popularity</h3>
                     <div><?=number_format($movie["popularity"], 1); ?></div>
                 </div>
+            
+            
+                <!-- IMPORTANT, Moved details and keywords out of their div containers. -->
                 <!-- Details -->
                 <div id="details">
                     <h2>Movie Details</h2>
@@ -132,6 +134,23 @@ $release = strtotime($movie["release_date"]); // This variable is used in two pl
                         </dd>
                     </dl>
                 </div>
+                <!-- Keywords -->
+                <div id="keywords">
+                    <h2>Keywords</h2>
+                    <div>
+                        <?php
+                        $keywords = json_decode($movie["keywords"], true);
+
+                        foreach ($keywords as $k) {
+                            echo "<span>" . $k["name"] . "</span>";
+                        }
+                        ?>
+                    </div>
+                </div>
+            
+            
+            
+            <div>
                 <!-- Production -->
                 <div id="production">
                     <h2>Production</h2>
@@ -187,19 +206,6 @@ $release = strtotime($movie["release_date"]); // This variable is used in two pl
                             ?>
                         </tbody>
                     </table>
-                </div>
-                <!-- Keywords -->
-                <div id="keywords">
-                    <h2>Keywords</h2>
-                    <div>
-                        <?php
-                        $keywords = json_decode($movie["keywords"], true);
-
-                        foreach ($keywords as $k) {
-                            echo "<span>" . $k["name"] . "</span>";
-                        }
-                        ?>
-                    </div>
                 </div>
             </div>
         </main>

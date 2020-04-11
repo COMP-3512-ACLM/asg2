@@ -1,3 +1,8 @@
+<?php 
+require_once 'includes/helpers.inc.php';
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,7 +10,10 @@
         <title>COMP3512-ASG2</title>
     </head>
     <body>
-        <h1>Assignment 2</h1>
-        <p>Testing PHP</p>
+        <?php outputHeader(); ?>
+        <main>
+            <h1>Assignment 2</h1>
+            <p>Testing PHP</p>
+        </main>
     </body>
 </html>
