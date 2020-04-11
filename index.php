@@ -1,7 +1,8 @@
 <?php
 
-//include "includes/helpers.inc.php";
-//include "includes/db-users.inc.php";
+include_once "includes/helpers.inc.php";
+include_once "includes/db-users.inc.php";
+include_once "db_index.inc.php";
 
 ?>
 <!DOCTYPE html>
@@ -16,40 +17,39 @@
     </head>
     <body>
         <?php
-            $loggedin = false;  //TODO: temporary, remove this
-//isLoggedIn()
-            if ($loggedin) {
+            //isLoggedIn()
+            if (false) {
             //BEGIN Logged in version
             echo "<section id='loged'>";
                 echo "<div id='header'>";
-                    //outputHeader();
+                    outputHeader();
                 echo "</div>";
 
                 echo "<div id='UInfo'>";
                     echo "<h2>User Info</h2>";
                     echo "<p>First Name: ";
-                    //displayFirst();
+                    displayFirst();
                     echo "</p>";
                     echo "<p>Last Name: ";
-                    //displayLast();
+                    displayLast();
                     echo "</p>";
                     echo "<p>City: ";
-                    //displayCity();
+                    displayCity();
                     echo "</p>";
                     echo "<p>Country: ";
-                    //displayCountry();
+                    displayCountry();
                     echo "</p>";
                 echo "</div>";
 
                 echo "<div id='search'>";
-                    echo "<form action='browse-movies.php'>";
-                        echo "<input name='search' type='text' placeholder='Search movies' />";
-                        echo "<button class='icon'>🔍</button>";
+                    echo "<form method='post' action='D:\includes\db-index.inc.php'>";
+                        echo "<input name='title' type='text' placeholder='Search movies' />";
+                        echo "<button type='submit' name='search' class='icon'>🔍</button>";
                     echo "</form>";
                 echo "</div>";
             
                 echo "<div id='favorite'>";
-                    echo "<h2>Favorite Movies</h2>";
+                    faves();
                 echo "</div>";
 
                 echo "<div id='recomend'>";
@@ -61,13 +61,15 @@
             //BEGIN Logged out version
             echo "<div class='landing'>";
                 echo "<div class='button-container'>";
-                    echo "<a class='login'>Login</a>";
-                    echo "<a class='login important'>Sign Up</a>";
+                    echo "<form method='post' action='\includes\db-index.inc.php'>";
+                        echo "<button type='submit' name='login' class='log'>Login</button>";
+                        echo "<button type='submit' name='signUp' class='sign'>Sign Up</button>";
+                    echo "</form>";
                 echo "</div>";
                 echo "<h1>Search Movies</h1>";
-                echo "<form action='browse-movies.php'>";
-                    echo "<input name='search' type='text' placeholder='Search movies' />";
-                    echo "<button class='icon'>🔍</button>";
+                echo "<form method='post' action='\includes\db-index.inc.php'>";
+                    echo "<input name='title' type='text' placeholder='Search movies' />";
+                    echo "<button type='submit' name='search' class='icon'>🔍</button>";
                 echo "</form>";
             echo "</div>";
             echo "<p id='credit'>Hero image credit goes here</p>";
