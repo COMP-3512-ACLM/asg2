@@ -1,32 +1,71 @@
 <?php
+require_once 'includes/db-users.inc.php';
 
 define("LOGO", "Logo");
 
 function outputHeader() {
+    echo "<style>";
+    echo "
+    #log 
+    {
+        margin-left: 90%;
+    }
+    #headSearch
+    {
+        width: 50em;
+        background-color: ghostwhite;
+    }
+    #headSearch input
+    {
+        width: 90%;
+    }
+    @media only screen and (max-width: 600px) 
+    {   
+        #log 
+        {
+            margin-left: 0%;
+        }
+        #headSearch
+        {
+            width: 10em;
+            background-color: white;
+        }
+        #headSearch input
+        {
+            width: 100%;
+        }
+    }";
+    echo "</style>";
+    
     echo "<header>";
     
-    echo "<h1 class='logo'>" . LOGO . "</h1>";
+    echo '<img src="/asg2-combined/image/film.png">'; //change asg2-combined to new folder if updated
     echo "<button id='menu'><div></div><div></div><div></div></button>";
     
     echo "<nav>";
     
-    outputNavLink("Home", "#");
-    outputNavLink("Browse", "#");
+    outputNavLink("Home", "http://localhost/asg2-combined/index.php");
+    outputNavLink("Browse", "http://localhost/asg2-combined/browse-movies.php");
     if (isLoggedIn()) {
-        outputNavLink("Favourites", "#");
+        outputNavLink("Favorites", "http://localhost/asg2-combined/favorites.php");
     }
-    outputNavLink("About", "#");
+    outputNavLink("About", "http://localhost/asg2-combined/about.php");
     
-    echo "<input type='text' placeholder='Search movies' />";
+    echo "<div id='headSearch'>";
+        echo "<form method='post' action='includes/db-index.inc.php'>";
+            echo "<input name='title' type='text' id='sTitle' placeholder='Search movies' />";
+            echo "<button type='submit' name='search' onclick='homeSearch()' class='icon'>🔍</button>";
+        echo "</form>";
+    echo "</div>";
     
     if (isLoggedIn()) {
         echo "<span>";
-        displayFirst();
+        getName();
         echo "</span>";
         echo "<a href='logout.php' class='login'>Log Out</a>";
     } else {
-        echo "<a href='#' class='login'>Login</a>";
-        echo "<a href='#' class='login important'>Sign Up</a>";
+        echo "<a href='http://localhost/asg2-combined/login.php' class='login' id='log' >Login</a>";
+        echo "<a href='http://localhost/asg2-combined/signup.php' class='login important'>Sign Up</a>";
     }
     
     echo "</nav>";

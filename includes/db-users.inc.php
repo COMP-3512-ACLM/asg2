@@ -48,7 +48,7 @@ function checkPassword($row, $passwordEntered){
     if (password_verify($passwordEntered, $userPass)){
         if(!isset($_SESSION['userLogin'])){
             $_SESSION['userLogin'] = $row;
-            header("Location: index.php"); //add the home page
+            //header("Location: index.php"); //add the home page
         }     
     }
     else{//incorrect password
@@ -70,7 +70,7 @@ function registration($connection){
     $validPass = false;
     
     if(isset($_POST['newEmail'])){
-        $validEmail = validateEmail($_POST['newEmail']);
+        $validEmail = validateEmail($_POST['newEmail'], $connection);
     }
     if ($validEmail){
         $validPass = validatePassword($_POST['newPass'], $_POST['confirmPass']);
@@ -84,15 +84,16 @@ function registration($connection){
 function createAccount($email, $password, $connection){
     try{
         $hashedPass = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
-        $userId = getId();
-        $sql = "insert into users (id, firstname, lastname, city, country, email, password, salt, password_sha256) values (?, ?, ?,  ?, ?, ?, ?, null, null)";
+        $userId = getId($connection);
+        $sql = "INSERT INTO users (id, firstname, lastname, city, country, email, password, salt, password_sha256) VALUES (?, ?, ?, ?, ?, ?, ?, null, null)";
         $tt = runQuery ($connection, $sql, array($userId, $_SESSION['first'], $_SESSION['last'], $_SESSION['uCity'], $_SESSION['uCountry'], $_SESSION['uEmail'], $hashedPass));
+        
         //this will add the session and redirect them
-        $userSql = "select * from users where email=$email";
-        $row = runQuery($connection, $sql, null);
+        $userSql = "select * from users where email=?";
+        $row = runQuery($connection, $userSql, array($email));
         if(!isset($_SESSION['userLogin'])){//checks to see if a user is already loged in
             $_SESSION['userLogin'] = $row->fetch(PDO::FETCH_ASSOC); //set the session to the row of user data from the database
-            //header("Location: index.php"); //this is commented out for now -- add the home page
+            header("Location: index.php"); //this is commented out for now -- add the home page
         }//end of !isset
         $connection = null;
         session_unset();
@@ -102,9 +103,8 @@ function createAccount($email, $password, $connection){
 }
 
 //this function will get the id of the new user by counting the amount of current user + 1
-function getId(){
+function getId($connection){
     try{
-        $connection = getConnection(); 
         $sql = "select count(id) as numOfAccounts from users";
         $result = runQuery ($connection, $sql, null);
         $row = $result->fetch(PDO::FETCH_ASSOC);
@@ -115,12 +115,10 @@ function getId(){
     }
 }
 
-function validateEmail($newEmail){
+function validateEmail($newEmail, $connection){
     try{
-        $connection = getConnection();
         $sql = 'select email from users';
         $allUsers = runQuery ($connection, $sql, null);
-        $connection = null;
         $valid = true;
         foreach ($allUsers as $user){
             if($user['email'] == $newEmail){// if there is a match set the the valid flag to false
@@ -174,43 +172,50 @@ function getUserInfo(){
 
 //the following 5 functions are for the form to dipslay the previous data
 function displayFirst(){
-    if(isset($_SESSION['first'])){
-        echo $_SESSION['first'];
+    if(isset($_SESSION['userLogin'])){
+        echo $_SESSION['userLogin']['firstname'];
     }
     else{
         echo "";
     }
 }
 function displayLast(){
-    if(isset($_SESSION['last'])){
-        echo $_SESSION['last'];
+    if(isset($_SESSION['userLogin'])){
+        echo $_SESSION['userLogin']['lastname'];
     }
     else{
         echo "";
     }
 }
 function displayCity(){
-    if(isset($_SESSION['uCity'])){
-        echo $_SESSION['uCity'];
+    if(isset($_SESSION['userLogin'])){
+        echo $_SESSION['userLogin']['city'];
     }
     else{
         echo "";
     }
 }
 function displayCountry(){
-    if(isset($_SESSION['uCountry'])){
-        echo $_SESSION['uCountry'];
+    if(isset($_SESSION['userLogin'])){
+        echo $_SESSION['userLogin']['country'];
     }
     else{
         echo "";
     }
 }
 function displayEmail(){
-    if(isset($_SESSION['uEmail'])){
+    if(isset($_SESSION['userLogin'])){
         echo $_SESSION['uEmail'];
     }
     else{
         echo "";
     }
 }
+
+function getName() {
+    if(isset($_SESSION['userLogin'])) {
+        echo $_SESSION['userLogin']['firstname'];
+    }
+}
+
 ?>

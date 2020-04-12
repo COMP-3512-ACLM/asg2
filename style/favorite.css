@@ -1,0 +1,82 @@
+body 
+{
+    background-image: url('../image/background.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+main 
+{
+    background-color: steelblue;
+    width: 50%;
+    height: 75%;
+    border: dashed 5px black;
+    margin: auto;
+    margin-top: 5em;
+}
+
+h1
+{
+    text-align: center;
+    font-size: 200%;
+    color: white;
+    text-shadow: -1px 0 powderblue, 0 1px powderblue, 1px 0 powderblue, 0 -1px powderblue;
+}
+
+#top
+{
+    padding-left: 10em;
+}
+
+#favelist 
+{
+    background-color: powderblue;
+    width: 20%;
+    height: 80%;
+    overflow-y: scroll;
+    border: ridge 2px firebrick;
+    margin-top: 5em;
+    padding: 1em;
+}
+
+#favelist ul
+{
+  list-style: none;
+}
+
+
+.btn
+{
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    padding: 0.5em 1em;
+    background-color: firebrick;
+}
+
+/******************************
+
+Mobile
+
+******************************/
+
+@media only screen and (max-width: 600px) {
+    /* TODO: remove; this is temporary */
+    
+    #favelist 
+    {
+        width: 100%;
+        height: 100%;
+        padding: 0em;
+        margin-top: 0em;
+    }
+    
+    #top
+    {
+        padding-left: 0em;
+    }
+    
+    
+    
+}

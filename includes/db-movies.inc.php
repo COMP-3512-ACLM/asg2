@@ -1,6 +1,6 @@
 <?php
 
-include "db-common.inc.php";
+require_once "db-common.inc.php";
 
 define("FIELDS_BRIEF", "id, tmdb_id, imdb_id, release_date, title, runtime, revenue, tagline, poster_path, vote_average, vote_count, popularity, overview");
 

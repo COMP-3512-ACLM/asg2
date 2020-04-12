@@ -16,18 +16,22 @@ if (isLoggedIn()) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="style/reset.css" />
         <link rel="stylesheet" href="style/style.css" />
+        <link rel="stylesheet" href="style/login.css" />
     </head>
     <body>
         <?php outputHeader(); ?>
         <main>
-            <h1>Log In</h1>
-            <p><?php echo $loginError; ?></p>
-            <form method="post" action="" class="login"> 
-                <span>Email</span><input type="email" name="email">
-                <br>
-                <span>Password</span><input type="password" name="password">
-                <input type="submit" name="loginButton">
-            </form>
+            <div id="login">
+                <h1>Log In</h1>
+                <p><?php echo $loginError; ?></p>
+                <form method="post" action="" class="login"> 
+                    <span>Email</span>
+                    <input type="email" name="email">
+                    <span>Password</span>
+                    <input type="password" name="password">
+                    <input type="submit" name="loginButton" id="submit">
+                </form>
+            </div>
         </main>
     </body>
 </html>

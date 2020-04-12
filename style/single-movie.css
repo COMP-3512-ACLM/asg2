@@ -1,3 +1,100 @@
+body {
+    background-color: steelblue;
+}
+
+main {
+    margin-right: 30em;
+    margin-left: 30em;
+    background-color: white;
+    border: solid 5px black;
+}
+
+header {
+    background-color: ghostwhite;
+    border: solid 1px black;
+}
+
+header img {
+    max-width: 70px;
+    max-height: 40px;
+}
+
+header nav a {
+    border: solid 1px black;
+}
+
+a:link {
+    color: firebrick;
+    text-decoration: none;
+}
+
+a:visited {
+    color: steelblue;
+}
+
+a:hover {
+    color: gray;
+}
+
+#production {
+    background-color: ghostwhite;
+    text-align: center;
+    width: 50%;
+}
+
+#production h2 {
+    text-align: center;
+    background-color: white;
+    font-size: 150%;
+    color: steelblue;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+#production button {
+    /*CSS Change*/
+
+    border: none;
+    color: white;
+    font-size: 110%;
+    text-align: center;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    
+    padding: 1em 2em;
+    background-color: firebrick;
+    border: solid 5px powderblue;
+}
+
+#cast th, #crew th {
+    font-size: 110%;
+    color: white;
+    background-color: steelblue;
+    border: solid 1px black;
+    padding: 5px;
+}
+
+table {
+    border: solid 5px powderblue
+}
+
+
+#score, #details, #card, #keywords {
+    margin-right: 2em;
+    margin-left: 2em;
+    padding: 1em;
+    background-color: ghostwhite;
+    border-bottom: dashed 5px firebrick;
+}
+
+#info h1 {
+    font-size: 150%;
+    color: steelblue;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+/*I did this css different all of the changes SHOULD be above this comment except for a few in mobile*/
+
+
+
 #card {
     display: grid;
     grid-template-columns: 185px 1fr;
@@ -44,7 +141,6 @@ main > div:not(#card) {
 #score, #details, #keywords  {
     grid-column: 1;
     
-    margin-bottom: 1rem;
 }
 
 #keywords {
@@ -200,5 +296,13 @@ Mobile
     
     #production {
         margin-bottom: 1rem;
+        
+        
+        width: 100%;
+    }
+    
+    main {
+        margin-right: 0em;
+        margin-left: 0em;
     }
 }
