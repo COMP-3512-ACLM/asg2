@@ -8,16 +8,20 @@ function outputHeader() {
     echo "
     #log 
     {
-        margin-left: 90%;
+        margin-left: 10em;
     }
     #headSearch
     {
-        width: 50em;
+        width: 30em;
         background-color: ghostwhite;
     }
     #headSearch input
     {
-        width: 90%;
+        width: 15em;
+    }
+    #headSearch button
+    {
+        display: none;
     }
     @media only screen and (max-width: 600px) 
     {   
@@ -27,12 +31,8 @@ function outputHeader() {
         }
         #headSearch
         {
-            width: 10em;
             background-color: white;
-        }
-        #headSearch input
-        {
-            width: 100%;
+            width: 5em;
         }
     }";
     echo "</style>";
