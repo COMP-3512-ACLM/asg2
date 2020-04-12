@@ -34,7 +34,7 @@ include "includes/helpers.inc.php";
         <p>Project Repo: <a href="https://github.com/COMP-3512-ACLM/asg2">Web II Assignment 2</a></p>
         <br>
         <h2>External Resources:</h2>
-        <p>Something here...</p>
+        <p>W3Schools</p>
     </div>
     
 </main>    
