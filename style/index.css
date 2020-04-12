@@ -48,6 +48,9 @@ a:hover {
 {
     border: dashed 5px black;
     font-size: 150%;
+    padding-bottom: 6em;
+    padding-left: 4em;
+    color: white;
 }
 
 #UInfo h2
@@ -58,10 +61,35 @@ a:hover {
     text-shadow: -1px 0 powderblue, 0 1px powderblue, 1px 0 powderblue, 0 -1px powderblue;
 }
 
+#favelist, #top form
+{
+    margin-left: 30%;
+}
+
+#favelist 
+{
+    background-color: powderblue;
+    width: 20%;
+    height: 80%;
+    border: ridge 2px firebrick;
+    padding: 2em;
+}
+
+#favelist ul
+{
+    list-style: none;
+}
+
+#favelist a:visited 
+{
+    color: steelblue;
+}
+
 #favorite
 {
     border: dashed 5px black;
     font-size: 150%;
+    overflow: scroll;
 }
 
 #favorite h1
@@ -72,10 +100,26 @@ a:hover {
     text-shadow: -1px 0 powderblue, 0 1px powderblue, 1px 0 powderblue, 0 -1px powderblue;
 }
 
+button
+{
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    padding: 0.5em 1em;
+    background-color: firebrick;
+}
+
+.btn
+{
+    display: none;
+}
+
 #recommend
 {
     border: dashed 5px black;
     font-size: 150%;
+    overflow: scroll;
+    padding-left: 8em;
+    padding-right: 8em;
 }
 
 #recommend h2
@@ -89,12 +133,13 @@ a:hover {
 #search
 {
     border: dashed 5px black;
+    padding-bottom: 10em;
 }
 #search form
 {
     text-align: center;
     margin:auto;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 #search input
 {
@@ -107,4 +152,69 @@ a:hover {
 {
     height: 100px;
     width: 100px;
+}
+
+#loggedOut
+{
+    border: dashed 5px black;
+    width: 50%;
+    margin: auto;
+    margin-top: 10%;
+    text-align: center;
+    padding: 5em;
+}
+
+#loSearch
+{
+    background-color: powderblue;
+    border: ridge 2px firebrick;
+}
+
+#loSearch h1
+{
+    margin-top: 1em;
+    font-size: 200%;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+#loButtons
+{
+    width: 10em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    /* TODO: remove; this is temporary */
+    #UInfo, #favorite, #search
+    {
+        font-size: 100%;
+    }
+    #search input
+    {
+        height: 40px;
+        width: 200px;
+    }
+    #search button
+    {
+        height: 40px;
+        width: 40px;
+    }
+    
+    #favelist, #top form
+    {
+        margin-left: 0%;
+    }
+    
+    #favelist 
+    {
+        padding-right: 6em;
+    }
+    
+    #recommend
+    {
+        font-size: 100%;
+        overflow: scroll;
+    }
 }

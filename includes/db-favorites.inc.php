@@ -1,6 +1,6 @@
 <?php
 
-include 'includes/db-movies.inc.php';
+require_once 'db-movies.inc.php';
 
 session_start();
 
@@ -8,8 +8,10 @@ session_start();
 function displaySingleMovie ($movie) {     
     //Links to single-movie.php with "id" parameter
     $id = $movie['id'];
+    echo '<li>';
     echo '<a href="single-movie.php?id=' .$id . '"><img src = "https://image.tmdb.org/t/p/w92/' . $movie['poster_path'] . '"></a>'; 
     echo '<a href="single-movie.php?id=' .$id . '"><p>' . $movie['title'] .'</p></a>';
+    echo '</li>';
 }
 
 // Function to remove movie 
@@ -27,7 +29,7 @@ function removeAllMovies (){
 
 // Function to Display Message
 function displayNoMovieMessage(){
-    echo "<p>No Movies Available</p>";
+    echo "<h1>No Movies Available</h1>";
 }
 
 
@@ -35,29 +37,34 @@ function displayNoMovieMessage(){
 function faveContent ($favorites){ 
     
     // print title of page
-    echo '<h1>Favorite Movies</h1>';
-    
-    // remove All Movies button
-    echo '<form method="post">';
-    echo '<input type="submit" name="removeAll" value="Remove All Movies">';
-    echo '</form>';
-    
-    //Loop through favorites array and generate all movies in list -- Works
-    $conn = getConnection();
-    
-    foreach ($favorites as $key => $value) {        
-        // get movie from database
-        $movie = getSingleMovie($conn, $value);
-        
-        displaySingleMovie($movie);
-        
-        // remove Movie button
-        echo '<form method="GET">';
-        echo '<input type="submit" name="remove" value="Remove Movie">';
-        echo '<input type="hidden" name="movieId" value=' . $key .'>';
+    echo '<main>';
+        echo '<div id="top">';
+        echo '<h1>Favorite Movies</h1>';
+        // remove All Movies button
+        echo '<form method="post">';
+        echo '<input type="submit" class="btn" name="removeAll" value="Remove All Movies">';
         echo '</form>';
-    }
-    
+        echo '</div>';
+        //Loop through favorites array and generate all movies in list -- Works
+        $conn = getConnection();
+        
+        echo '<div id="favelist">';
+            echo '<ul>';
+            foreach ($favorites as $key => $value) {        
+                // get movie from database
+                $movie = getSingleMovie($conn, $value);
+
+                displaySingleMovie($movie);
+
+                // remove Movie button
+                echo '<form method="GET">';
+                echo '<input type="submit" class="btn" name="remove" value="Remove Movie">';
+                echo '<input type="hidden" name="movieId" value=' . $key .'>';
+                echo '</form>';
+            }
+            echo '</ul>';
+        echo '<div>';
+    echo '</main>';
     $conn = null;
 }
 ?>

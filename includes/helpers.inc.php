@@ -4,6 +4,39 @@ require_once 'includes/db-users.inc.php';
 define("LOGO", "Logo");
 
 function outputHeader() {
+    echo "<style>";
+    echo "
+    #log 
+    {
+        margin-left: 90%;
+    }
+    #headSearch
+    {
+        width: 50em;
+        background-color: ghostwhite;
+    }
+    #headSearch input
+    {
+        width: 90%;
+    }
+    @media only screen and (max-width: 600px) 
+    {   
+        #log 
+        {
+            margin-left: 0%;
+        }
+        #headSearch
+        {
+            width: 10em;
+            background-color: white;
+        }
+        #headSearch input
+        {
+            width: 100%;
+        }
+    }";
+    echo "</style>";
+    
     echo "<header>";
     
     echo '<img src="/asg2-combined/image/film.png">'; //change asg2-combined to new folder if updated
@@ -18,7 +51,12 @@ function outputHeader() {
     }
     outputNavLink("About", "http://localhost/asg2-combined/about.php");
     
-    echo "<input type='text' placeholder='Search movies' />";
+    echo "<div id='headSearch'>";
+        echo "<form method='post' action='includes/db-index.inc.php'>";
+            echo "<input name='title' type='text' id='sTitle' placeholder='Search movies' />";
+            echo "<button type='submit' name='search' onclick='homeSearch()' class='icon'>🔍</button>";
+        echo "</form>";
+    echo "</div>";
     
     if (isLoggedIn()) {
         echo "<span>";
@@ -26,7 +64,7 @@ function outputHeader() {
         echo "</span>";
         echo "<a href='logout.php' class='login'>Log Out</a>";
     } else {
-        echo "<a href='http://localhost/asg2-combined/login.php' class='login'>Login</a>";
+        echo "<a href='http://localhost/asg2-combined/login.php' class='login' id='log' >Login</a>";
         echo "<a href='http://localhost/asg2-combined/signup.php' class='login important'>Sign Up</a>";
     }
     

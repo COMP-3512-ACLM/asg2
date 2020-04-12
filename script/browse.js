@@ -12,6 +12,11 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!searchString) {
         searchString = "";
     }
+    if(sessionStorage.getItem('title'))
+    {
+        searchString = sessionStorage.getItem('title');
+        sessionStorage.removeItem('title');
+    }
     search(searchString);
     
     
@@ -68,7 +73,11 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
+function homeSearch()
+{
+    const title = document.querySelector("#sTitle").value;
+    sessionStorage.setItem("title", title);
+}
 
 
 

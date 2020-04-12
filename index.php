@@ -12,6 +12,8 @@ include_once 'includes/db-index.inc.php';
         <link rel="stylesheet" href="style/reset.css" />
         <link rel="stylesheet" href="style/style.css" />
         <script src="script/header.js"></script>
+        <script src="script/browse.js"></script>
+        <script src="script/recommended.js"></script>
         <link rel="stylesheet" type="text/css" href="style/index.css" />
     </head>
     <body>
@@ -43,8 +45,8 @@ include_once 'includes/db-index.inc.php';
 
                     echo "<div id='search'>";
                         echo "<form method='post' action='includes/db-index.inc.php'>";
-                            echo "<input name='title' type='text' placeholder='Search movies' />";
-                            echo "<button type='submit' name='search' class='icon'>🔍</button>";
+                            echo "<input name='title' type='text' id='sTitle' placeholder='Search movies' />";
+                            echo "<button type='submit' name='search' onclick='homeSearch()' class='icon'>🔍</button>";
                         echo "</form>";
                     echo "</div>";
 
@@ -61,22 +63,24 @@ include_once 'includes/db-index.inc.php';
             } else 
             { 
             //BEGIN Logged out version
-            echo "<div class='landing'>";
-                echo "<div class='button-container'>";
+            echo "<div id='header'>";
+                outputHeader();
+            echo "</div>";
+            echo "<div class='landing' id='loggedOut'>";
+                echo "<div class='button-container' id='loButtons'>";
                     echo "<form method='post' action='includes/db-index.inc.php'>";
                         echo "<button type='submit' name='login' class='log'>Login</button>";
-                    echo "</form>";
-                    echo "<form method='post' action='includes/db-index.inc.php'>";
                         echo "<button type='submit' name='signUp' class='sign'>Sign Up</button>";
                     echo "</form>";
                 echo "</div>";
-                echo "<h1>Search Movies</h1>";
-                echo "<form method='post' action='includes/db-index.inc.php'>";
-                    echo "<input name='title' type='text' placeholder='Search movies' />";
-                    echo "<button type='submit' name='search' class='icon'>🔍</button>";
-                echo "</form>";
+                echo "<div id='loSearch'>";
+                    echo "<h1>Search Movies</h1>";
+                    echo "<form method='post' action='includes/db-index.inc.php'>";
+                        echo "<input name='title' type='text' id='sTitle' placeholder='Search movies' />";
+                        echo "<button type='submit' name='search' onclick='homeSearch()' class='icon'>🔍</button>";
+                    echo "</form>";
+                echo "</div>";
             echo "</div>";
-            echo "<p id='credit'>Hero image credit goes here</p>";
             //END Logged out version
             }
         ?>
