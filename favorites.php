@@ -21,6 +21,7 @@ if ( !isset($_SESSION["Favorites"])) {
 echo '<link rel="stylesheet" href="style/style.css" />';
 echo '<link rel="stylesheet" href="style/browse.css" />';
 echo '<link rel="stylesheet" href="style/favorite.css" />';
+echo '<script src="script/header.js"></script>';
 
 outputHeader(); //header
     

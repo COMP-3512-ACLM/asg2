@@ -29,6 +29,7 @@ $release = strtotime($movie["release_date"]); // This variable is used in two pl
         <link rel="stylesheet" href="style/style.css" />
         <link rel="stylesheet" href="style/single-movie.css" />
         <script src="script/single-movie.js"></script>
+        <script src="script/header.js"></script>
     </head>
     <body>
         <?php outputHeader(); ?>
@@ -91,7 +92,7 @@ $release = strtotime($movie["release_date"]); // This variable is used in two pl
                         <button type='submit' name='favorite' value='<?=$movie["id"]; ?>'>Favorite</button>
                     </form>
                     <a href="https://www.imdb.com/title/<?=$movie["imdb_id"]; ?>">IMDb</a>
-                    <a href="https://www.themoviedb.org/movie/<?=$movie["tmdb_id"]; ?>">TMDD</a>
+                    <a href="https://www.themoviedb.org/movie/<?=$movie["tmdb_id"]; ?>">TMDB</a>
                 </div>
             </div>
              <!-- Score -->

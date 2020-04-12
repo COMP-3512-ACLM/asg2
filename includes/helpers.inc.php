@@ -1,8 +1,6 @@
 <?php
 require_once 'includes/db-users.inc.php';
 
-define("LOGO", "Logo");
-
 function outputHeader() {
     echo "<style>";
     echo "
@@ -39,17 +37,17 @@ function outputHeader() {
     
     echo "<header>";
     
-    echo '<img src="/asg2-combined/image/film.png">'; //change asg2-combined to new folder if updated
+    echo '<img src="image/film.png">'; //change asg2-combined to new folder if updated
     echo "<button id='menu'><div></div><div></div><div></div></button>";
     
     echo "<nav>";
     
-    outputNavLink("Home", "http://localhost/asg2-combined/index.php");
-    outputNavLink("Browse", "http://localhost/asg2-combined/browse-movies.php");
+    outputNavLink("Home", "index.php");
+    outputNavLink("Browse", "browse-movies.php");
     if (isLoggedIn()) {
-        outputNavLink("Favorites", "http://localhost/asg2-combined/favorites.php");
+        outputNavLink("Favorites", "favorites.php");
     }
-    outputNavLink("About", "http://localhost/asg2-combined/about.php");
+    outputNavLink("About", "about.php");
     
     echo "<div id='headSearch'>";
         echo "<form method='post' action='includes/db-index.inc.php'>";
@@ -64,8 +62,8 @@ function outputHeader() {
         echo "</span>";
         echo "<a href='logout.php' class='login'>Log Out</a>";
     } else {
-        echo "<a href='http://localhost/asg2-combined/login.php' class='login' id='log' >Login</a>";
-        echo "<a href='http://localhost/asg2-combined/signup.php' class='login important'>Sign Up</a>";
+        echo "<a href='login.php' class='login' id='log' >Login</a>";
+        echo "<a href='signup.php' class='login important'>Sign Up</a>";
     }
     
     echo "</nav>";
