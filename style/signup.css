@@ -12,6 +12,7 @@ main {
     background-color: steelblue;
     margin: 1em 30em 30em 30em;
     border: dashed 5px black;
+    min-width: 35em;
 }
 
 #signup {
@@ -22,6 +23,7 @@ main {
     height: 60%;
     padding-top: 1em;
     border: ridge 5px powderblue;
+    min-width: 30em;
 }
 
 #signup h1 {
@@ -76,6 +78,19 @@ a:hover {
 Mobile
 
 ******************************/
+
+@media only screen and (min-width: 601px) and (max-width: 1000px) {
+    /* TODO: remove; this is temporary */
+    main {
+        flex-direction: column;
+        height: 100%;
+        
+        min-width: 0;
+        
+        margin-right: 10em;
+        margin-left: 10em;
+    }
+}
 
 @media only screen and (max-width: 600px) {
     /* TODO: remove; this is temporary */

@@ -3,10 +3,11 @@ body {
 }
 
 main {
-    margin-right: 30em;
-    margin-left: 30em;
+    margin-right: 10em;
+    margin-left: 10em;
     background-color: white;
     border: solid 5px black;
+    min-width: 30em;
 }
 
 header {
@@ -62,6 +63,7 @@ a:hover {
     padding: 1em 2em;
     background-color: firebrick;
     border: solid 5px powderblue;
+    width: 5em;
 }
 
 #cast th, #crew th {
@@ -73,7 +75,8 @@ a:hover {
 }
 
 table {
-    border: solid 5px powderblue
+    border: solid 5px powderblue;
+    min-width: 6em;
 }
 
 
@@ -247,7 +250,6 @@ Poster & Lightbox
 Mobile
 
 ******************************/
-
 @media only screen and (max-width: 600px) {
     hr {
         display: none;

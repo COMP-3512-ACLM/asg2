@@ -15,6 +15,7 @@ main {
     margin-top: 10em;
     padding: 10em;
     border: dashed 5px black;
+    min-width: 25em;
 }
 
 header {
@@ -49,6 +50,7 @@ a:hover {
     background-color: black;
     padding: 5em 1em;
     border: ridge 5px powderblue;
+    min-width: 20em;
 }
 
 #login input {
