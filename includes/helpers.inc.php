@@ -1,25 +1,70 @@
 <?php
-
-define("LOGO", "Logo");
+require_once 'includes/db-users.inc.php';
 
 function outputHeader() {
+    echo "<style>";
+    echo "
+    #log 
+    {
+        margin-left: 10em;
+    }
+    #headSearch
+    {
+        width: 30em;
+        background-color: ghostwhite;
+    }
+    #headSearch input
+    {
+        width: 15em;
+    }
+    #headSearch button
+    {
+        display: none;
+    }
+    @media only screen and (max-width: 600px) 
+    {   
+        #log 
+        {
+            margin-left: 0%;
+        }
+        #headSearch
+        {
+            background-color: white;
+            width: 5em;
+        }
+    }";
+    echo "</style>";
+    
     echo "<header>";
     
-    echo "<h1 class='logo'>" . LOGO . "</h1>";
+    echo '<img src="image/film.png">'; //change asg2-combined to new folder if updated
     echo "<button id='menu'><div></div><div></div><div></div></button>";
     
     echo "<nav>";
     
-    outputNavLink("Home", "#");
-    outputNavLink("Browse", "#");
-    outputNavLink("Favourites", "#"); /* TODO: check if logged in */
-    outputNavLink("About", "#");
+    outputNavLink("Home", "index.php");
+    outputNavLink("Browse", "browse-movies.php");
+    if (isLoggedIn()) {
+        outputNavLink("Favorites", "favorites.php");
+    }
+    outputNavLink("About", "about.php");
     
-    echo "<input type='text' placeholder='Search movies' />";
+    echo "<div id='headSearch'>";
+        echo "<form method='post' action='includes/db-index.inc.php'>";
+            echo "<input name='title' type='text' id='sTitle' placeholder='Search movies' />";
+            echo "<button type='submit' name='search' onclick='homeSearch()' class='icon'>🔍</button>";
+        echo "</form>";
+    echo "</div>";
     
-    /* TODO: check if logged in */
-    echo "<a href='#' class='login'>Login</a>";
-    echo "<a href='#' class='login important'>Sign Up</a>";
+    if (isLoggedIn()) {
+        echo "<span>";
+        getName();
+        echo "</span>";
+        echo "<a href='logout.php' class='login'>Log Out</a>";
+    } else {
+        echo "<a href='login.php' class='login' id='log' >Login</a>";
+        echo "<a href='signup.php' class='login important'>Sign Up</a>";
+    }
     
     echo "</nav>";
     
